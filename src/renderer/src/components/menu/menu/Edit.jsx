@@ -1,5 +1,10 @@
+import { useContext } from "react"
+import { MainContext } from "../../../contexts/mainContext"
+
 
 export default function Edit() {
+
+  const { setNewElemntData } = useContext(MainContext)
 
   return {
     label: 'Edición',
@@ -8,12 +13,26 @@ export default function Edit() {
       {
         label: 'Insertar Imagen',
         icon: 'pi pi-images',
-        command: () => { alert('hola') }
+        command: () => {
+          setNewElemntData({
+            image: "../../appAssets/borders/java-4.svg",
+            imageWidth: 100,
+            imageHeight: 100,
+            type: "svg"
+          })
+        }
       },
       {
         label: 'Insertar Texto',
         icon: 'pi pi-comment',
-        command: () => { }
+        command: () => {
+          setNewElemntData({
+            image: "../../assets/electron.svg",
+            imageWidth: 100,
+            imageHeight: 100,
+            type: "svg"
+          })
+        }
       },
       {
         label: 'Cambiar Filtro',
