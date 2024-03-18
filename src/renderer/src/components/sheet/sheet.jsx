@@ -1,4 +1,4 @@
-import { useContext, useState} from "react"
+import { useContext, useEffect, useState} from "react"
 import { MainContext } from "../../contexts/mainContext.jsx";
 import Element from "../element/element.jsx"
 
@@ -11,7 +11,14 @@ export default function Sheet() {
   const [ cursorImage, setCursorImage ] = useState({});
 
 
+  //esto actualiza el cursor si newElementData es null
+  useEffect(()=>{
+    if(!newElementData){
+      defaultMouseMoveImage();
+    }
+  }, [newElementData])
 
+  //funcion que resetea la imagen que arrastra el cursor
   const defaultMouseMoveImage = ()=>{
     setCursorImage(
       {
@@ -25,6 +32,8 @@ export default function Sheet() {
       }
     )
   }
+
+  //esta funcion cambia la imagen que arrasta el cursor
   const onMouseMove = async (e)=>{
     if (!newElementData) {
       defaultMouseMoveImage()
@@ -46,7 +55,7 @@ export default function Sheet() {
           height: `${imageHeight}px`,
           top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
           left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
-          filter: 'brightness(150%)'
+          filter: 'opacity(50%)'
         },
         image
       }
@@ -54,7 +63,8 @@ export default function Sheet() {
 
   }
 
-  
+
+  //esta funcion coloca la imagen en la hoja cuando se hace click
   const onClick = async (e) => {
     if(!newElementData){
       return
@@ -92,7 +102,7 @@ export default function Sheet() {
   }
 
   return (
-    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage}>
+    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage} onKeyDown={()=> alert("holsa")}>
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
       <img src={ cursorImage.image} alt="" style={cursorImage.style} />
     </div>

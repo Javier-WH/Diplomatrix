@@ -17,3 +17,8 @@
 .insertImage-img:hover{
   border: 1px solid black;
 }
+
+#image-selector-container{
+  margin-bottom: 20px;
+  width: 100%;
+}
