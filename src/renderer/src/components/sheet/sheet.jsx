@@ -1,12 +1,16 @@
-import { useContext, useState } from "react"
+import { useContext, useState} from "react"
 import { MainContext } from "../../contexts/mainContext.jsx";
 import Element from "../element/element.jsx"
+
+
 
 
 export default function Sheet() {
   const { elements, setElements, sheetStyle, newElementData, setNewElemntData} = useContext(MainContext);
  
   const [ cursorImage, setCursorImage ] = useState({});
+
+
 
   const defaultMouseMoveImage = ()=>{
     setCursorImage(
@@ -41,16 +45,16 @@ export default function Sheet() {
           width: `${imageWidth}px`,
           height: `${imageHeight}px`,
           top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
-          left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px'
+          left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
+          filter: 'brightness(150%)'
         },
-        image: new URL(image, import.meta.url).href
+        image
       }
     )
 
   }
 
   
-
   const onClick = async (e) => {
     if(!newElementData){
       return
@@ -87,10 +91,8 @@ export default function Sheet() {
     }
   }
 
- 
-
   return (
-    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove}>
+    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage}>
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
       <img src={ cursorImage.image} alt="" style={cursorImage.style} />
     </div>

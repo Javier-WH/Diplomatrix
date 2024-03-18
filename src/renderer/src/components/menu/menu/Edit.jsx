@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { MainContext } from "../../../contexts/mainContext"
 
-
-export default function Edit() {
+export default function Edit({ setShowInsertImage }) {
 
   const { setNewElemntData } = useContext(MainContext)
+
 
   return {
     label: 'Edición',
@@ -13,25 +13,13 @@ export default function Edit() {
       {
         label: 'Insertar Imagen',
         icon: 'pi pi-images',
-        command: () => {
-          setNewElemntData({
-            image: "../../appAssets/borders/java-4.svg",
-            imageWidth: 100,
-            imageHeight: 100,
-            type: "svg"
-          })
-        }
+        command: () => setShowInsertImage(true)
       },
       {
         label: 'Insertar Texto',
         icon: 'pi pi-comment',
         command: () => {
-          setNewElemntData({
-            image: "../../assets/electron.svg",
-            imageWidth: 100,
-            imageHeight: 100,
-            type: "svg"
-          })
+    
         }
       },
       {

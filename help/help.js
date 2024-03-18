@@ -18,4 +18,20 @@
     _elements[1].left = new_leftValue + "px"
     setElements(_elements)
   };
+
+
+
+
+
+  : new URL(image, import.meta.url).href
+
+
+
+
+        setNewElemntData({
+            image: "electron.svg",
+            imageWidth: 100,
+            imageHeight: 100,
+            type: "svg"
+          })
   */
