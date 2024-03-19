@@ -1,0 +1,67 @@
+:root{
+  --width: 7px;
+  --height: 7px;
+  --margin: -9px;
+}
+.selectorBall{
+  position: absolute;
+  width: var(--width);
+  height: var(--height);
+  border: 1px solid black;
+  background-color: yellow;
+  border-radius: 50%;
+
+}
+#top-left-selectorBall{
+  left: var(--margin);
+  top: var(--margin);
+  cursor: nwse-resize;
+}
+
+#top-selectorBall{
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  top: var(--margin);
+  cursor: ns-resize;
+}
+
+#top-right-selectorBall {
+  top: var(--margin);
+  right: var(--margin);
+  cursor: nesw-resize;
+}
+
+#rigth-selectorBall{
+  right: var(--margin);
+  top: calc(50% - var(--height));
+  cursor: ew-resize;
+}
+
+#button-rigth-selectorBall{
+  right: var(--margin);
+  bottom: var(--margin);
+    cursor: nwse-resize;
+}
+
+#button-selectorBall{
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  bottom: var(--margin);
+  cursor: ns-resize;
+}
+
+#button-left-selectorBall{
+  left: var(--margin);
+  bottom: var(--margin);
+  cursor: nesw-resize;
+}
+
+#left-selectorBall{
+  left: var(--margin);
+  top: calc(50% - var(--height));
+  cursor: ew-resize;
+}

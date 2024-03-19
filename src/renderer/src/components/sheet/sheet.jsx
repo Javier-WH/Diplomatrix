@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState} from "react"
 import { MainContext } from "../../contexts/mainContext.jsx";
 import Element from "../element/element.jsx"
-
+import SelectionTool from "../selectionTool/selectionTool.jsx";
 
 
 
@@ -105,6 +105,7 @@ export default function Sheet() {
     <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage} onKeyDown={()=> alert("holsa")}>
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
       <img src={ cursorImage.image} alt="" style={cursorImage.style} />
+      <SelectionTool />
     </div>
   );
 }
