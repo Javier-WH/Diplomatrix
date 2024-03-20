@@ -89,6 +89,7 @@ export default function Sheet() {
           height: imageHeight + "px",
           left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
           top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
+          userSelect: 'none',
         }
       }
       let _elements = JSON.parse(JSON.stringify(elements));

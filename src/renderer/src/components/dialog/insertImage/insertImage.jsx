@@ -11,7 +11,7 @@ export default function InsertImage({ visible, setVisible }) {
 
   const [imgList, setImgList] = useState([]);
   const [category, setCategory] = useState();
-  const { setNewElemntData, selectedElement, setSelectedElement } = useContext(MainContext);
+  const { setNewElemntData, setSelectedElement } = useContext(MainContext);
 
   //con esto se solicita al entorno de electron que genere una lista de los assets
   useEffect(() => {
@@ -38,7 +38,8 @@ export default function InsertImage({ visible, setVisible }) {
       name,
       imageWidth: 100,
       imageHeight: 100,
-      type: "svg"
+      type: "svg",
+
     })
   }
 
