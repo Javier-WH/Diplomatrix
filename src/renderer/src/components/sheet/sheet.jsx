@@ -6,7 +6,7 @@ import SelectionTool from "../selectionTool/selectionTool.jsx";
 
 
 export default function Sheet() {
-  const { elements, setElements, sheetStyle, newElementData, setNewElemntData} = useContext(MainContext);
+  const { elements, selectedElement, setElements, sheetStyle, newElementData, setNewElemntData} = useContext(MainContext);
  
   const [ cursorImage, setCursorImage ] = useState({});
 
@@ -102,8 +102,10 @@ export default function Sheet() {
     }
   }
 
+
+
   return (
-    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage} onKeyDown={()=> alert("holsa")}>
+    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage}>
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
       <img src={ cursorImage.image} alt="" style={cursorImage.style} />
       <SelectionTool />

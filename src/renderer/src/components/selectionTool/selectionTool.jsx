@@ -22,7 +22,6 @@ export default function SelectionTool(){
     setBoxStyle(style)
   },[selectedElement])
 
-
   // manejo del click, para cambiar tamaño y para mover
   //establece la posicion y tamaño inicial del la herramienta
   const handleMouseDown = e =>{
@@ -37,7 +36,8 @@ export default function SelectionTool(){
     setMouseDown(true)
   }
 
-  //manela los eventos de cambiar de tamaño y mover de la herramienta
+
+  //maneja los eventos de cambiar de tamaño y mover de la herramienta
   useEffect(() => {
     const handleMousemove = (e) => {
       const mouseCurrentLeftPosition = e.clientX
@@ -50,10 +50,10 @@ export default function SelectionTool(){
       const boxWidth = boxStyle.width.replace("px", "")
       const boxLeft = boxStyle.left.replace("px", "")
       const boxTop = boxStyle.top.replace("px", "")
-
-
+  
+  
    
-
+  
       if (elementClicked === 'rigth-selectorBall'){
         const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
         setBoxStyle({
@@ -61,7 +61,7 @@ export default function SelectionTool(){
           width: newWidth + "px"
         })
       }
-
+  
       if (elementClicked === 'button-rigth-selectorBall') {
         const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
         const newHeight = Number.parseFloat(boxHeight) - Number.parseFloat(diferenceY)
@@ -71,7 +71,7 @@ export default function SelectionTool(){
           height: newHeight + "px"
         })
       }
-
+  
       if (elementClicked === 'button-selectorBall') {
         const newHeight = Number.parseFloat(boxHeight) - Number.parseFloat(diferenceY)
         setBoxStyle({
@@ -79,7 +79,7 @@ export default function SelectionTool(){
           height: newHeight + "px"
         })
       }
-
+  
       if (elementClicked === 'left-selectorBall') {
         const newWidth = Number.parseFloat(boxWidth) + Number.parseFloat(diferenceX)
         const newLeft = Number.parseFloat(boxLeft) - diferenceX
@@ -89,7 +89,7 @@ export default function SelectionTool(){
           left: newLeft + "px"
         })
       }
-
+  
       if (elementClicked === 'button-left-selectorBall') {
         const newWidth = Number.parseFloat(boxWidth) + Number.parseFloat(diferenceX)
         const newHeight = Number.parseFloat(boxHeight) - Number.parseFloat(diferenceY)
@@ -101,7 +101,7 @@ export default function SelectionTool(){
           height: newHeight + "px"
         })
       }
-
+  
       if (elementClicked === 'top-selectorBall') {
         const newHeight = Number.parseFloat(boxHeight) + Number.parseFloat(diferenceY)
         const newTop = Number.parseFloat(boxTop) - diferenceY
@@ -111,7 +111,7 @@ export default function SelectionTool(){
           top: newTop + "px"
         })
       }
-
+  
       if (elementClicked === 'top-left-selectorBall') {
         const newWidth = Number.parseFloat(boxWidth) + Number.parseFloat(diferenceX)
         const newHeight = Number.parseFloat(boxHeight) + Number.parseFloat(diferenceY)
@@ -125,7 +125,7 @@ export default function SelectionTool(){
           left: newLeft + "px",
         })
       }
-
+  
       if (elementClicked === 'top-right-selectorBall') {
         const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
         const newHeight = Number.parseFloat(boxHeight) + Number.parseFloat(diferenceY)
@@ -138,10 +138,22 @@ export default function SelectionTool(){
           top: newTop + "px",
         })
       }
-
-
+  
+      //mover la imagen
+      if (elementClicked === 'selectionTool-box') {
+        const left = boxLeft - diferenceX
+        const top = boxTop - diferenceY
+        setBoxStyle({
+          ...boxStyle,
+          left: left + 'px',
+          top: top + 'px'
+      
+        })
+      }
+  
     };
 
+   
     if (mouseDown) {
       window.addEventListener("mousemove", handleMousemove);
     } else {
@@ -153,20 +165,49 @@ export default function SelectionTool(){
     };
   }, [elementClicked, mouseDown]);
 
+
  //previene que al soltar el click no se siga cambiando el tamaño del elemento
   useEffect(()=>{
-    window.addEventListener("mouseup",()=>{
-      setMouseDown(false)
-    })
-    window.addEventListener("click", e=>{
 
-      if (e.target.id === 'Sheet' || e.target.id === 'sheet-container'){
+    const handleMouseUp = e =>{
+      
+      setMouseDown(false)
+      if (e.target.id === 'Sheet' || e.target.id === 'sheet-container') {
         setSelectedElement(null)
       }
-    })
-  },[])
+    }
+   
+      window.addEventListener("mouseup",handleMouseUp)
+
+  }, [])
 
 
+  //borra el elemento seleccionado
+  useEffect(()=>{
+    if(selectedElement == null){
+      return
+    }
+
+    const handleKeyUp = e => {
+      if (e.key === "Delete") {
+        elements.splice(selectedElement, 1)
+        for (let element in elements) {
+          elements[element].header.index = element
+        }
+        setSelectedElement(null)
+      }
+    }
+
+    window.removeEventListener("keyup", handleKeyUp)
+    window.addEventListener("keyup", handleKeyUp)
+
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [selectedElement])
+
+
+  //actuaaliza la imagen cuando la herraamienta cambie
   useEffect(()=>{
     if (!boxStyle || selectedElement === null){
       return
@@ -188,7 +229,7 @@ export default function SelectionTool(){
 
 
   return<>
-    <div id="selectionTool-box" style={boxStyle} onMouseDown={handleMouseDown} onMouseUp={()=> setMouseDown(false)}>
+    <div id="selectionTool-box" style={boxStyle} onMouseDown={handleMouseDown} >
       <div id="top-left-selectorBall" className="selectorBall"></div>
       <div id="top-selectorBall" className="selectorBall"></div>
       <div id="top-right-selectorBall" className="selectorBall"></div>

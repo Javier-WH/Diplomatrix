@@ -22,7 +22,7 @@ export default function Element({ elemetData }) {
     setSelectedElement(index)
    }
 
-  return <div id={`element-${index}`} style={style} onClick={handleClick}>
+  return <div id={`element-${index}`} style={style} onMouseDown={handleClick} >
     <img src={image} alt="" className="element-img" />
   </div>
 

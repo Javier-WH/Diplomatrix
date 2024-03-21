@@ -44,9 +44,10 @@ export default function InsertImage({ visible, setVisible }) {
   }
 
   //cuando se pisa escape, resetea el nuevo elemento a agregar
-  const cancelSelection = () =>{
-    setNewElemntData(null)
-    setSelectedElement(null)
+  const cancelSelection = (e) =>{
+    if (e.key === 'Escape'){
+      setNewElemntData(null)
+    }
   }
 
   window.addEventListener('keydown', cancelSelection);
