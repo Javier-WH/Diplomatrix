@@ -1,17 +1,15 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState} from 'react';
 import { Dialog } from 'primereact/dialog';
 import PropTypes from "prop-types"
-import { MainContext } from '../../../contexts/mainContext';
 import "./insertImage.css"
 import FilterButons from './filterImageButons';
 const { ipcRenderer } = window.require('electron');
 
 
-export default function InsertImage({ visible, setVisible }) {
+export default function InsertImage({ visible, setVisible, setNewElemntData }) {
 
   const [imgList, setImgList] = useState([]);
   const [category, setCategory] = useState();
-  const { setNewElemntData} = useContext(MainContext);
 
   //con esto se solicita al entorno de electron que genere una lista de los assets
   useEffect(() => {
@@ -54,7 +52,7 @@ export default function InsertImage({ visible, setVisible }) {
 
   return (
     <div className="card flex justify-content-center">
-      <Dialog header="Insertar Imagenes" modal={false} closeOnEscape={false}  visible={visible} style={{ width: '400px', height:'600px' }} onHide={() => setVisible(false)}>
+      <Dialog header="Insertar Imagenes" modal={false} closeOnEscape={false} visible={visible} style={{ width: '25%', height: '70%' }} position='right' onHide={() => setVisible(false)}>
         <FilterButons category={category} setCategory={setCategory}/>
        <div id='insertImage-imageContainer'>
         {
@@ -87,5 +85,6 @@ export default function InsertImage({ visible, setVisible }) {
 
 InsertImage.propTypes = {
   visible: PropTypes.bool,
-  setVisible: PropTypes.func
+  setVisible: PropTypes.func,
+  setNewElemntData: PropTypes.func
 };

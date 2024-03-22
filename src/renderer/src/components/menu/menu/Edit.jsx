@@ -5,7 +5,13 @@ import { MainContext } from "../../../contexts/mainContext.jsx"
 export default function Edit() {
 
   
-  const { setShowInsertImage, setNewElemntData } = useContext(MainContext);
+  const { 
+    setNewElemntData, 
+    setShowInsertImage, 
+    showInsertImage, 
+    showEditText,
+    setShowEditText
+  } = useContext(MainContext);
 
   return {
     label: 'Edición',
@@ -13,7 +19,7 @@ export default function Edit() {
     items: [
       {
         label: 'Insertar Imagen',
-        icon: 'pi pi-images',
+        icon: showInsertImage ? "pi pi-check" :'pi pi-images',
         command: () => setShowInsertImage(true)
       },
       {
@@ -27,6 +33,11 @@ export default function Edit() {
             type: "txt",
           })
         }
+      },
+      {
+        label: 'Editar Texto',
+        icon: showEditText ? "pi pi-check" : 'pi pi-pencil',
+        command: () => setShowEditText(true)
       },
       {
         label: 'Cambiar Filtro',
