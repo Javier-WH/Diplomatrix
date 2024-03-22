@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import { Menubar } from 'primereact/menubar'
-import InsertImage from '../dialog/insertImage/insertImage'
 
 import File from './menu/File'
 import Edit from './menu/Edit'
@@ -10,13 +8,10 @@ import SheetC from './menu/sheetC'
 
 export default function MenuBar() {
 
-  const [ showInsertImage, setShowInsertImage ] = useState(false);
-
-
 
   const items = [
     File(),
-    Edit({ setShowInsertImage }),
+    Edit(),
     SheetC(),
     Help(),
   ]
@@ -24,9 +19,7 @@ export default function MenuBar() {
   
   return (
     <div className="card" id='menu-bar'>
-    <Menubar model={items} />
-
-      <InsertImage visible={showInsertImage} setVisible={setShowInsertImage} />
+      <Menubar model={items} />
     </div>
     )
   }

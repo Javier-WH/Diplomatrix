@@ -11,7 +11,7 @@ export default function InsertImage({ visible, setVisible }) {
 
   const [imgList, setImgList] = useState([]);
   const [category, setCategory] = useState();
-  const { setNewElemntData, setSelectedElement } = useContext(MainContext);
+  const { setNewElemntData} = useContext(MainContext);
 
   //con esto se solicita al entorno de electron que genere una lista de los assets
   useEffect(() => {

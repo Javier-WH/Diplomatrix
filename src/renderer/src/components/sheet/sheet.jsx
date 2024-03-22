@@ -6,9 +6,10 @@ import SelectionTool from "../selectionTool/selectionTool.jsx";
 
 
 export default function Sheet() {
-  const { elements, selectedElement, setElements, sheetStyle, newElementData, setNewElemntData} = useContext(MainContext);
+  const { elements, setElements, sheetStyle, newElementData, setNewElemntData} = useContext(MainContext);
  
   const [ cursorImage, setCursorImage ] = useState({});
+
 
 
   //esto actualiza el cursor si newElementData es null
@@ -40,27 +41,27 @@ export default function Sheet() {
       return
     }
 
-    const { image, imageWidth, imageHeight } = newElementData
+    const { image, imageWidth, imageHeight, type } = newElementData
 
     const sheetMarginLeft = e.currentTarget.getBoundingClientRect().left;
     const sheetMarginTop = e.currentTarget.getBoundingClientRect().top
     const mouseX = e.clientX;
     const mouseY = e.clientY; 
-    setCursorImage(
-      {
-        style: {
-          pointerEvents: "none",
-          position: "absolute",
-          width: `${imageWidth}px`,
-          height: `${imageHeight}px`,
-          top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
-          left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
-          filter: 'opacity(50%)'
-        },
-        image
-      }
-    )
+    const style = {
+      style: {
+        pointerEvents: "none",
+        position: "absolute",
+        width: `${imageWidth}px`,
+        height: `${imageHeight}px`,
+        top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
+        left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
+        filter: type === 'txt' ? 'brightness(3)' : 'opacity(50%)',
+        border: type === 'txt' ? '1px solid black': 'tansparent',
+      },
+      image: type === 'txt' ? trasparentImage : image 
+    }
 
+    setCursorImage(style)
   }
 
 
@@ -70,28 +71,37 @@ export default function Sheet() {
       return
     }
     try {
-      const { image, imageWidth, imageHeight, type } = newElementData
+      const { image, imageWidth, imageHeight, type, content } = newElementData
       const sheetMarginLeft = e.currentTarget.getBoundingClientRect().left;
       const sheetMarginTop = e.currentTarget.getBoundingClientRect().top
       const mouseX = e.clientX;
       const mouseY = e.clientY; 
       const index = elements.length;
 
+
+      const style = {
+        position: "absolute",
+        width: imageWidth + "px",
+        height: imageHeight + "px",
+        left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
+        top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
+        userSelect: 'none',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }
+
+
       const element = {
         header: {
           index,
           type,
-          image
+          image,
+          content
         },
-        style: {
-          position: "absolute",
-          width: imageWidth + "px",
-          height: imageHeight + "px",
-          left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
-          top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
-          userSelect: 'none',
-        }
+        style
       }
+      
       let _elements = JSON.parse(JSON.stringify(elements));
       _elements.push(element)
       setElements(_elements)
@@ -107,8 +117,10 @@ export default function Sheet() {
   return (
     <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage}>
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
-      <img src={ cursorImage.image} alt="" style={cursorImage.style} />
+      <img src={cursorImage.image} alt="" style={cursorImage.style}  /> 
       <SelectionTool />
     </div>
   );
 }
+
+const trasparentImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="

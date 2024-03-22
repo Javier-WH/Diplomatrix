@@ -8,7 +8,7 @@ export default function Element({ elemetData }) {
   const { newElementData, selectedElement, setSelectedElement } = useContext(MainContext);
 
   const { header, style } = elemetData
-  const { image, index} = header
+  const { image, index, type, content } = header
 
 
   useEffect(() => {
@@ -22,8 +22,14 @@ export default function Element({ elemetData }) {
     setSelectedElement(index)
    }
 
+
   return <div id={`element-${index}`} style={style} onMouseDown={handleClick} >
-    <img src={image} alt="" className="element-img" />
+    {
+      type === 'txt' ? 
+        <label>{content}</label>
+      :
+      <img src={image} alt="" className="element-img" />
+    }
   </div>
 
 }

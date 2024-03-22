@@ -1,10 +1,11 @@
 import { useContext } from "react"
-import { MainContext } from "../../../contexts/mainContext"
+import { MainContext } from "../../../contexts/mainContext.jsx"
 
-export default function Edit({ setShowInsertImage }) {
 
-  const { setNewElemntData } = useContext(MainContext)
+export default function Edit() {
 
+  
+  const { setShowInsertImage, setNewElemntData } = useContext(MainContext);
 
   return {
     label: 'Edición',
@@ -18,8 +19,13 @@ export default function Edit({ setShowInsertImage }) {
       {
         label: 'Insertar Texto',
         icon: 'pi pi-comment',
-        command: () => {
-    
+        command: ()=>{
+          setNewElemntData({
+            content: "Dobleclick para modificar el texto",
+            imageWidth: 260,
+            imageHeight: 25,
+            type: "txt",
+          })
         }
       },
       {
