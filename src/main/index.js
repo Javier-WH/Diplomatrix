@@ -6,6 +6,7 @@ import fs from 'fs'
 
 const assetPath = join(__dirname, '../../resources/assets') 
 
+import fontList from 'font-list'
 
 function createWindow() {
   // Create the browser window.
@@ -35,7 +36,6 @@ function createWindow() {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
-
 
   // Función para cargar una imagen desde una ruta de archivo
 function cargarImagen(ruta) {
@@ -71,6 +71,12 @@ function cargarImagen(ruta) {
       }
     });
   });
+
+  ipcMain.on('getFontList', async ()=>{
+    const list = await fontList.getFonts();
+    mainWindow.webContents.send('fontsList', list);
+  })
+
 
 
   // HMR for renderer base on electron-vite cli.

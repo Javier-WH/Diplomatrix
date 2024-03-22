@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types"
 
 import { Dropdown } from 'primereact/dropdown';
 
@@ -19,3 +19,9 @@ export default function FilterSelector({ category, setCategory }) {
     </div>
   )
 }
+
+FilterSelector.propTypes = {
+  category: PropTypes.object,
+  setCategory: PropTypes.func,
+
+};

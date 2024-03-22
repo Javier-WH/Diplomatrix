@@ -6,9 +6,11 @@ import SelectionTool from "../selectionTool/selectionTool.jsx";
 
 
 export default function Sheet() {
-  const { elements, setElements, sheetStyle, newElementData, setNewElemntData} = useContext(MainContext);
+  const { elements, setElements, sheetStyle, newElementData, setNewElemntData } = useContext(MainContext);
  
   const [ cursorImage, setCursorImage ] = useState({});
+
+
 
 
 
