@@ -3,7 +3,7 @@ import { MainContext } from "../../../../contexts/mainContext";
 import getSVGIcon from "../../../../icons/iconList";
 import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
-
+import './editTextStyles.css'
 
 
 export default function FontSizeSelector(){
@@ -22,7 +22,6 @@ export default function FontSizeSelector(){
     if (elements[selectedElement]?.header?.type === 'txt') {
       setDisabled(false)
       const currentSize = elements[selectedElement].style?.fontSize?.replace('px', "")
-      
       setSize(currentSize ? currentSize : 16)
   
     } else {
@@ -55,7 +54,5 @@ export default function FontSizeSelector(){
     <Button icon={getSVGIcon("textDecrease")} aria-label="Filter" disabled={disabled} onClick={decreaseIncreaseSize} />
     <InputNumber value={size} onValueChange={(e) => setSize(e.value)} min={0} max={200} inputStyle={{ width: "60px" }} disabled={disabled} />
   </div>
-
-
 
 }

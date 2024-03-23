@@ -47,13 +47,18 @@ export default function InsertImage() {
   }
 
   //cuando se pisa escape, resetea el nuevo elemento a agregar
-  const cancelSelection = (e) =>{
-    if (e.key === 'Escape'){
-      setNewElemntData(null)
+  useEffect(() => {
+    const cancelSelection = (e) =>{
+      if (e.key === 'Escape'){
+        setNewElemntData(null)
+      }
     }
-  }
+    window.addEventListener('keydown', cancelSelection);
 
-  window.addEventListener('keydown', cancelSelection);
+    return () => {
+      window.removeEventListener('keydown', cancelSelection);
+    };
+  }, []);
 
   return (
     <div className="card flex justify-content-center">

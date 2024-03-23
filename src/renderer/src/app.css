@@ -7,13 +7,17 @@ body{
 }
 
 
+#app-main-containert{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px auto;
+  width: 100vw;
+  height: 100vh;
+}
+
 #sheet-container{
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+

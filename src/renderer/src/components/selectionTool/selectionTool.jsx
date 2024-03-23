@@ -3,7 +3,7 @@ import { MainContext } from "../../contexts/mainContext"
 import "./selectionTool.css"
 
 export default function SelectionTool(){
-  const { selectedElement, elements, setSelectedElement } = useContext(MainContext);
+  const { selectedElement, elements, setElements, setSelectedElement } = useContext(MainContext);
   const [boxStyle, setBoxStyle] = useState();
   const [initialMousePosition, setInitialMousePosition] = useState(null);
   const [mouseDown, setMouseDown] = useState(false);
@@ -51,8 +51,6 @@ export default function SelectionTool(){
       const boxLeft = boxStyle.left.replace("px", "")
       const boxTop = boxStyle.top.replace("px", "")
   
-  
-   
   
       if (elementClicked === 'rigth-selectorBall'){
         const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
@@ -190,10 +188,14 @@ export default function SelectionTool(){
 
     const handleKeyUp = e => {
       if (e.key === "Delete") {
-        elements.splice(selectedElement, 1)
-        for (let element in elements) {
-          elements[element].header.index = element
-        }
+        let _elements = JSON.parse(JSON.stringify(elements));
+        _elements.splice(selectedElement, 1)
+
+        _elements.forEach((element, i) => {
+            element.header.index = i
+        });
+        
+        setElements(_elements)
         setSelectedElement(null)
       }
     }

@@ -32,6 +32,12 @@ export default function FontSelector() {
       return
     }
     if (elements[selectedElement]?.header?.type === 'txt'){
+      const fontName = elements[selectedElement]?.style.fontFamily
+   
+        setSelectedFont({
+          name: fontName,
+          code: fontName
+        })
       setDisabled(false)
     }else{
       setDisabled(true)

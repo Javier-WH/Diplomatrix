@@ -91,7 +91,9 @@ export default function Sheet() {
         userSelect: 'none',
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        ...(type === 'txt' && { fontFamily: "Arial" }),
+        ...(type === 'txt' && { fontSize: "16px" })
       }
 
 
