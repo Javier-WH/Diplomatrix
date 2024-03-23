@@ -1,17 +1,11 @@
 import { useContext } from "react"
 import { MainContext } from "../../../contexts/mainContext.jsx"
-
+import { MenuContext } from "../../../contexts/menuContext.jsx";
 
 export default function Edit() {
 
-  
-  const { 
-    setNewElemntData, 
-    setShowInsertImage, 
-    showInsertImage, 
-    showEditText,
-    setShowEditText
-  } = useContext(MainContext);
+  const {setNewElemntData } = useContext(MainContext);
+  const { setShowInsertImage, showInsertImage, showEditText, setShowEditText } = useContext(MenuContext)
 
   return {
     label: 'Edición',

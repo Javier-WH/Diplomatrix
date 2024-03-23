@@ -6,26 +6,39 @@ import { MainContext } from "../../../../contexts/mainContext";
 
 export default function FontSelector() {
 
+  const { elements, setElements,  selectedElement } = useContext(MainContext)
   const [selectedFont, setSelectedFont] = useState(null);
   const [fontList, setFontList] = useState([])
-  const { elements, selectedElement } = useContext(MainContext)
+  const [disabled, setDisabled] = useState(false)
+
+
 
   useEffect(() => {
-    const selectedAsset = elements[selectedElement]
-    if(!selectedAsset){
+    if(selectedElement === null || disabled){
       return
     }
-    if (selectedAsset?.header?.type !== 'txt') {
+    if (elements[selectedElement]?.header?.type !== 'txt') {
       return
     }
-    const previusStyle = selectedAsset.style;
-    const newStyle = {
-      ...previusStyle,
-      fontFamily: selectedFont.name
-    }
-    elements[selectedElement].style = newStyle
+    let _elements = JSON.parse(JSON.stringify(elements));
+    _elements[selectedElement].style.fontFamily = selectedFont?.name;
+    setElements(_elements)
 
   }, [selectedFont])
+
+  useEffect(() => { 
+    if(selectedElement === null){
+      setDisabled(true)
+      return
+    }
+    if (elements[selectedElement]?.header?.type === 'txt'){
+      setDisabled(false)
+    }else{
+      setDisabled(true)
+    }
+
+
+  }, [selectedElement])
 
 
 
@@ -47,12 +60,10 @@ export default function FontSelector() {
     };
   }, []);
 
-
-
   return (
-    <div className="card flex justify-content-start">
+    <div className="card flex justify-content-start" >
       <Dropdown value={selectedFont} onChange={(e) => { setSelectedFont(e.value)} } options={fontList} optionLabel="name"
-        placeholder="Selecciona una fuete" className="w-full md:w-14rem" style={{ width: '100%', maxWidth:"350px" }} />
+        placeholder="Selecciona una fuete" className="w-full md:w-14rem" style={{ width: '100%', maxWidth: "350px", minWidth: "350px" }} disabled={disabled}/>
     </div>
   )
 }

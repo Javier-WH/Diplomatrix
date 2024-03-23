@@ -2,6 +2,7 @@ import { useContext, useEffect, useState} from "react"
 import { MainContext } from "../../contexts/mainContext.jsx";
 import Element from "../element/element.jsx"
 import SelectionTool from "../selectionTool/selectionTool.jsx";
+import Dialogs from "../dialog/dialogProvider.jsx";
 
 
 
@@ -121,6 +122,7 @@ export default function Sheet() {
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
       <img src={cursorImage.image} alt="" style={cursorImage.style}  /> 
       <SelectionTool />
+      <Dialogs/>
     </div>
   );
 }

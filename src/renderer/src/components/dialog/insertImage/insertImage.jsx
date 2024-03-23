@@ -1,13 +1,18 @@
-import { useEffect, useState} from 'react';
+import { useContext, useEffect, useState} from 'react';
 import { Dialog } from 'primereact/dialog';
 import PropTypes from "prop-types"
 import "./insertImage.css"
 import FilterButons from './filterImageButons';
+import { MainContext } from '../../../contexts/mainContext';
+import { MenuContext } from '../../../contexts/menuContext';
 const { ipcRenderer } = window.require('electron');
 
 
-export default function InsertImage({ visible, setVisible, setNewElemntData }) {
+export default function InsertImage() {
+ 
 
+  const { setNewElemntData } = useContext(MainContext)
+  const { showInsertImage: visible, setShowInsertImage:setVisible } =useContext(MenuContext)
   const [imgList, setImgList] = useState([]);
   const [category, setCategory] = useState();
 

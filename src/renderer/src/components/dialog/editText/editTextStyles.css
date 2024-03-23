@@ -1,0 +1,16 @@
+#editText-main-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.editText-component-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+}
+#font-size-button-container{
+  display: flex;
+  column-gap: 5px;
+}
