@@ -93,7 +93,8 @@ export default function Sheet() {
         justifyContent: "center",
         alignItems: "center",
         ...(type === 'txt' && { fontFamily: "Arial" }),
-        ...(type === 'txt' && { fontSize: "16px" })
+        ...(type === 'txt' && { fontSize: "16px" }),
+        ...(type === 'txt' && { textAlign: "center" })
       }
 
 

@@ -16,6 +16,7 @@ export default function FontSizeSelector(){
   useEffect(()=>{
     if(selectedElement === null){
       setDisabled(true)
+      setSize("")
       return
     }
 
@@ -25,6 +26,7 @@ export default function FontSizeSelector(){
       setSize(currentSize ? currentSize : 16)
   
     } else {
+      setSize("")
       setDisabled(true)
     }
 

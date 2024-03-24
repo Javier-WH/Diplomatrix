@@ -6,6 +6,7 @@ import FontSizeSelector from "../dialog/editText/editTextComponets/fontSizeSelec
 import FontStyleSelector from "../dialog/editText/editTextComponets/fontStyleSelector"
 import FontSelector from "../dialog/editText/editTextComponets/fontSelector"
 import TextFormat from "../dialog/editText/textFormat/textFormat"
+import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligtmentSelector"
 
 export default function ToolBar(){
 
@@ -14,17 +15,21 @@ export default function ToolBar(){
       <FileMenu/>
     </div>
     <div id="toolbar-tools-container">
+
       <div className="toolbar-tools-seccion">
-        <InsertTextButton/>
-        <FontSizeSelector/>
-        <FontStyleSelector />
-        <TextFormat/>
-        <FontSelector />
+        <InsertTextButton />
+        <InsertImageButton />
       </div>
 
       <div className="toolbar-tools-seccion">
-        <InsertImageButton />
+        <FontSelector />
+        <FontSizeSelector/>
+        <FontStyleSelector />
+        <FontAligmentSelector/>
+        <TextFormat/>
       </div>
+
+    
     </div>
   </div>
 

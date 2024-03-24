@@ -28,6 +28,7 @@ export default function FontSelector() {
 
   useEffect(() => { 
     if(selectedElement === null){
+      setSelectedFont(null)
       setDisabled(true)
       return
     }
@@ -40,6 +41,7 @@ export default function FontSelector() {
         })
       setDisabled(false)
     }else{
+      setSelectedFont(null)
       setDisabled(true)
     }
 

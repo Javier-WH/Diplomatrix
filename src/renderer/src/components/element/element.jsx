@@ -26,7 +26,7 @@ export default function Element({ elemetData }) {
   return <div id={`element-${index}`} style={style} onMouseDown={handleClick} >
     {
       type === 'txt' ? 
-        <label>{content}</label>
+        <label style={{width: "100%"}}>{content}</label>
       :
       <img src={image} alt="" className="element-img" />
     }

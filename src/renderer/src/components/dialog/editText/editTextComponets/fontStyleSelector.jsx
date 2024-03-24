@@ -14,13 +14,21 @@ export default function FontStyleSelector() {
   const [disabled, setDisabled] = useState(false)
 
 
+  //maneja cuando se selecciona un texto
   useEffect(() => {
     if (selectedElement === null) {
+      setBold(false)
+      setItalic(false)
+      setUnderline(false)
       setDisabled(true)
       return
     }
 
     if (elements[selectedElement]?.header?.type === 'txt') {
+      let style =  elements[selectedElement].style
+      setBold(style.fontWeight === 900)
+      setItalic(style.fontStyle === "italic")
+      setUnderline(style.textDecoration === "underline")
       setDisabled(false)
     } else {
       setDisabled(true)
@@ -30,7 +38,7 @@ export default function FontStyleSelector() {
   }, [selectedElement])
 
 
-
+  //agrega los efectos al texto
   useEffect(() => {
     if (selectedElement === null || disabled || elements[selectedElement]?.header?.type !== 'txt') {
       return
@@ -43,6 +51,8 @@ export default function FontStyleSelector() {
 
   }, [bold, italic, underline])
 
+
+
   const handleBold = () => {
     setBold(!bold)
   }
@@ -54,9 +64,9 @@ export default function FontStyleSelector() {
   }
 
   return <div id="font-size-button-container">
-    <Button icon={getSVGIcon("bold")} aria-label="Filter" disabled={disabled} onClick={handleBold} />
-    <Button icon={getSVGIcon("italic")} aria-label="Filter" disabled={disabled} onClick={handleItalic} />
-    <Button icon={getSVGIcon("underline")} aria-label="Filter" disabled={disabled} onClick={handleUnderline} />
+    <Button icon={getSVGIcon("bold")} aria-label="Filter" severity={bold ? "secondary" : "primary"} disabled={disabled} onClick={handleBold} />
+    <Button icon={getSVGIcon("italic")} aria-label="Filter" severity={italic ? "secondary" : "primary"} disabled={disabled} onClick={handleItalic} />
+    <Button icon={getSVGIcon("underline")} aria-label="Filter" severity={underline ? "secondary" : "primary"} disabled={disabled} onClick={handleUnderline} />
    
   </div>
 

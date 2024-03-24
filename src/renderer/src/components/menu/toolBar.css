@@ -10,8 +10,9 @@
 #toolbar-tools-container{
   height: 100%;
   display: flex;
-  gap: 3px;
+  gap: 10px;
   margin-left: 3px;
+  margin-left: 10px;
  
 }
 
@@ -19,7 +20,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  align-items: center;
-  max-width: 360px;
+  align-items: start;
+  max-width: 510px;
   column-gap: 3px;
 }

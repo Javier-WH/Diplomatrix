@@ -1,0 +1,20 @@
+#text-format-main-container{
+  width: 300px;
+}
+
+.text-format-item-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-format-icon-container > svg{
+  fill: var(--primary-color);
+}
+
+.text-format-item-container > label{
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  color: var(--primary-color);
+  font-weight: 700;
+}

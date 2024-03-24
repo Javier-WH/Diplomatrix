@@ -10,6 +10,8 @@
 
 
 }
+
+#font-aligtment-button-container,
 #font-size-button-container{
   display: flex;
   column-gap: 5px;
