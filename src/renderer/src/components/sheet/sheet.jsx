@@ -3,7 +3,7 @@ import { MainContext } from "../../contexts/mainContext.jsx";
 import Element from "../element/element.jsx"
 import SelectionTool from "../selectionTool/selectionTool.jsx";
 import Dialogs from "../dialog/dialogProvider.jsx";
-
+import "./test.css"
 
 
 export default function Sheet() {
@@ -94,7 +94,9 @@ export default function Sheet() {
         alignItems: "center",
         ...(type === 'txt' && { fontFamily: "Arial" }),
         ...(type === 'txt' && { fontSize: "16px" }),
-        ...(type === 'txt' && { textAlign: "center" })
+        ...(type === 'txt' && { textAlign: "center" }),
+        //WebkitTextStrokeWidth: '1px', 
+        //WebkitTextStrokeColor: 'black'
       }
 
 

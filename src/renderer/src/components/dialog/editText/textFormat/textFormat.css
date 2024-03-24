@@ -1,5 +1,8 @@
 #text-format-main-container{
   width: 300px;
+  border-bottom: 1px solid var(--primary-color);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .text-format-item-container{
@@ -17,4 +20,15 @@
   align-items: center;
   color: var(--primary-color);
   font-weight: 700;
+}
+.text-format-main-subiten-border-container{
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  align-items: center;
+  margin-bottom: 5px;
+
+}
+.text-format-main-subiten-border-container #text-colorPicker{
+  justify-self: center;
+
 }
