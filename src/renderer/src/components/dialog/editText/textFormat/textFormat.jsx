@@ -18,6 +18,7 @@ export default function TextFormat() {
 
   useEffect(() => {
     if (selectedElement === null) {
+      op.current.hide()
       setDisabled(true)
       return
     }

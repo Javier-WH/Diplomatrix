@@ -9,14 +9,35 @@ export default function TextShadowSelector() {
 
   const { elements, setElements, selectedElement } = useContext(MainContext)
   const [checked, setChecked] = useState(false);
-  const [shadowColor, setShadowColor] = useState("#000000");
-  const [xAxis, setXaxis] = useState(0);
-  const [yAxis, setYaxis] = useState(0);
-  const [density, setDensity] = useState(0);
+  const [shadowColor, setShadowColor] = useState("000000");
+  const [xAxis, setXaxis] = useState(3);
+  const [yAxis, setYaxis] = useState(3);
+  const [distorcion, setDistorcion] = useState(2);
 
+  
+  useEffect(()=>{
+    if(selectedElement === null) return
+    let _elements = JSON.parse(JSON.stringify(elements));
+    let value = checked ? `${xAxis}px ${yAxis}px ${distorcion}px #${shadowColor}` : "none"
+    _elements[selectedElement].style["textShadow"] = value
+    setElements(_elements)
+  }, [checked, xAxis, yAxis, distorcion, shadowColor])
 
+  useEffect(()=>{
+    if (selectedElement === null) return
+    const shadow = elements[selectedElement].style["textShadow"]
+    if(shadow === "none" || shadow === undefined) return
+   
+    const shadowValues = shadow?.split("px ")
+    const [_xAxis, _yAxis, _distorcion, _shadowColor] = shadowValues
 
-
+    setChecked(true)
+    setXaxis(_xAxis)
+    setYaxis(_yAxis)
+    setDistorcion(_distorcion)
+    setShadowColor(_shadowColor.replace("#",""))
+    
+  },[selectedElement])
 
 
 
@@ -37,17 +58,17 @@ export default function TextShadowSelector() {
       </div>
       <div className="text-format-main-subiten-border-container">
         <span>Posición horizontal</span>
-        <Slider style={{ width: "100%" }} value={xAxis} onChange={(e) => setXaxis(e.value)} className="w-14rem" min={0} max={10} steps={10} />
+        <Slider style={{ width: "100%" }} value={xAxis} onChange={(e) => setXaxis(e.value)} className="w-14rem" min={-20} max={20}  />
       </div>
 
       <div className="text-format-main-subiten-border-container">
         <span>Posición vertical</span>
-        <Slider style={{ width: "100%" }} value={yAxis} onChange={(e) => setYaxis(e.value)} className="w-14rem" min={0} max={10} steps={10} />
+        <Slider style={{ width: "100%" }} value={yAxis} onChange={(e) => setYaxis(e.value)} className="w-14rem" min={-20} max={20} />
       </div>
 
       <div className="text-format-main-subiten-border-container">
-        <span>Densidad</span>
-        <Slider style={{ width: "100%" }} value={density} onChange={(e) => setDensity(e.value)} className="w-14rem" min={0} max={10} steps={10} />
+        <span>Distorción</span>
+        <Slider style={{ width: "100%" }} value={distorcion} onChange={(e) => setDistorcion(e.value)} className="w-14rem" min={0} max={20} />
       </div>
 
     </div>

@@ -1,5 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useRef } from "react"
 import { MainContext } from "../../contexts/mainContext"
+import { OverlayPanel } from 'primereact/overlaypanel';
+import EditText from "./selectionToolUtils/editText";
 import "./selectionTool.css"
 
 export default function SelectionTool(){
@@ -8,7 +10,8 @@ export default function SelectionTool(){
   const [initialMousePosition, setInitialMousePosition] = useState(null);
   const [mouseDown, setMouseDown] = useState(false);
   const [elementClicked, setElementClicked] = useState(null);
-  
+  const [type, setType] = useState('svg')
+  const op = useRef(null);
 
   //la herramienta se coloca sobre el elemento
   useEffect(()=>{
@@ -230,8 +233,17 @@ export default function SelectionTool(){
   }, [boxStyle])
 
 
+  const handleDoubleClick = (e)=>{
+    const type = elements[selectedElement].header.type
+    if(type === "txt"){
+      setType("txt")
+      op.current.show(e)
+    }
+  }
+
+
   return<>
-    <div id="selectionTool-box" style={boxStyle} onMouseDown={handleMouseDown} >
+    <div id="selectionTool-box" style={boxStyle} onMouseDown={handleMouseDown} onDoubleClick={handleDoubleClick}>
       <div id="top-left-selectorBall" className="selectorBall"></div>
       <div id="top-selectorBall" className="selectorBall"></div>
       <div id="top-right-selectorBall" className="selectorBall"></div>
@@ -240,6 +252,16 @@ export default function SelectionTool(){
       <div id="button-selectorBall" className="selectorBall"></div>
       <div id="button-left-selectorBall" className="selectorBall"></div>
       <div id="left-selectorBall" className="selectorBall"></div>
+
+      <OverlayPanel ref={op}>
+       {
+          type === 'txt' ?
+            <EditText op={op}/>
+          :
+          null
+        
+       }
+      </OverlayPanel>
     </div>
   </>
 

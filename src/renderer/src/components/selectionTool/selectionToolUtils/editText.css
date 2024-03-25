@@ -1,0 +1,12 @@
+#editText-overlay-panel-container{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: center;
+}
+
+#editText-overlay-panel-container > span{
+  font-size: 11px;
+  color: gray;
+
+}
