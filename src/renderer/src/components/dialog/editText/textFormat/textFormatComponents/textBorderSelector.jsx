@@ -7,10 +7,10 @@ import { MainContext } from "../../../../../contexts/mainContext";
 
 export default function TextBorderSelector() {
 
-  const { elements, selectedElement, addStyle, getStyle } = useContext(MainContext)
+  const { selectedElement, addStyle, getStyle } = useContext(MainContext)
   const [checked, setChecked] = useState(false);
-  const [borderColor, setBorderColor] = useState("#000000");
-  const [thickness, setThickness] = useState(1);
+  const [borderColor, setBorderColor] = useState();
+  const [thickness, setThickness] = useState();
 
   //vigila cuando se selecciona un elemento y revisa si tiene color o grosor de borde activo
   useEffect(()=>{
@@ -19,31 +19,24 @@ export default function TextBorderSelector() {
     }
 
     const thickValue = getStyle("WebkitTextStrokeWidth")
-    const thick = thickValue ? thickValue.replace("px", "") : null
+    const thick = thickValue ? thickValue.replace("px", "") : 0
     const colorValue = getStyle("WebkitTextStrokeColor")
-    const color = colorValue ? colorValue.replace("#", "") : null
-
-    if(thick > 0){
-      setChecked(true)
-      setThickness(thick)
-      if(color){
-        setBorderColor(color)
-      }else{
-        setBorderColor("000000")
-      }
-    }
-  
+    const color = colorValue ? colorValue.replace("#", "") : "000000"
+    setChecked(thick > 0)
+    setThickness(thick)
+    setBorderColor(color)
   },[selectedElement])
 
 
   //vigila cuando el valor del color del borde cambia y aplica el estilo
   useEffect(()=>{
-    if(selectedElement === null){
+    if (selectedElement === null || !borderColor){
       return
     }
-    const value = checked ? "#" + borderColor : "#000000"
-    addStyle({ key: "WebkitTextStrokeColor", value })
-  }, [borderColor, checked])
+    
+    //const value = checked ? "#" + borderColor : "#000000"
+    addStyle({ key: "WebkitTextStrokeColor", value: "#" + borderColor })
+  }, [borderColor])
 
 
   //vigila cuando el grosor del borde cambia y aplica el estilo
@@ -69,7 +62,6 @@ export default function TextBorderSelector() {
         <div className="text-format-main-subiten-border-container">
           <span>Color del borde</span>
           <ColorPicker id="text-colorPicker" value={borderColor} onChange={(e) => setBorderColor(e.value)} />
-
         </div>
       <div className="text-format-main-subiten-border-container">
           <span>Grosor del borde</span>

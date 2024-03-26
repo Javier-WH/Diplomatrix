@@ -10,7 +10,7 @@ body{
 #app-main-containert{
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px auto;
+  grid-template-rows: 101px auto;
   width: 100vw;
   height: 100vh;
 }

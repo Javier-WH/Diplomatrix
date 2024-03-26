@@ -7,6 +7,7 @@ import FontStyleSelector from "../dialog/editText/editTextComponets/fontStyleSel
 import FontSelector from "../dialog/editText/editTextComponets/fontSelector"
 import TextFormat from "../dialog/editText/textFormat/textFormat"
 import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligtmentSelector"
+import FormatImage from "../dialog/editImage/formatImage/formatImage"
 
 export default function ToolBar(){
 
@@ -18,15 +19,16 @@ export default function ToolBar(){
 
       <div className="toolbar-tools-seccion">
         <InsertTextButton />
-        <InsertImageButton />
+        <TextFormat/>
+        <FontStyleSelector />
+        <FontAligmentSelector/>
+        <FontSelector />
+        <FontSizeSelector/>
       </div>
 
       <div className="toolbar-tools-seccion">
-        <FontSelector />
-        <FontSizeSelector/>
-        <FontStyleSelector />
-        <FontAligmentSelector/>
-        <TextFormat/>
+        <InsertImageButton />
+        <FormatImage />
       </div>
 
     
