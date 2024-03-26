@@ -6,7 +6,7 @@ import { MainContext } from "../../../../contexts/mainContext";
 
 export default function FontSelector() {
 
-  const { elements, setElements,  selectedElement } = useContext(MainContext)
+  const { elements, selectedElement, addStyle } = useContext(MainContext)
   const [selectedFont, setSelectedFont] = useState(null);
   const [fontList, setFontList] = useState([])
   const [disabled, setDisabled] = useState(false)
@@ -20,10 +20,7 @@ export default function FontSelector() {
     if (elements[selectedElement]?.header?.type !== 'txt') {
       return
     }
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style.fontFamily = selectedFont?.name;
-    setElements(_elements)
-
+    addStyle({ key: "fontFamily", value: selectedFont?.name })
   }, [selectedFont])
 
   useEffect(() => { 

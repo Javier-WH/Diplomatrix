@@ -6,7 +6,7 @@ import './editTextStyles.css'
 
 
 export default function FontStyleSelector() {
-  const { elements, setElements, selectedElement } = useContext(MainContext)
+  const { elements, selectedElement, addStyle } = useContext(MainContext)
 
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
@@ -38,18 +38,29 @@ export default function FontStyleSelector() {
   }, [selectedElement])
 
 
-  //agrega los efectos al texto
+  //agrega subrayado al texto
   useEffect(() => {
     if (selectedElement === null || disabled || elements[selectedElement]?.header?.type !== 'txt') {
       return
     }
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style["fontWeight"] =  bold ? 900 : 400
-    _elements[selectedElement].style["fontStyle"] = italic ? "italic" : "normal"
-    _elements[selectedElement].style["textDecoration"] = underline ? "underline" : "none"
-    setElements(_elements)
+    addStyle({ key: "textDecoration", value: underline ? "underline" : "none" })
+  }, [underline])
 
-  }, [bold, italic, underline])
+  //agrega subrayado al negrita
+  useEffect(() => {
+    if (selectedElement === null || disabled || elements[selectedElement]?.header?.type !== 'txt') {
+      return
+    }
+    addStyle({ key: "fontWeight", value: bold ? 900 : 400 })
+  }, [bold])
+
+  //agrega subrayado al cursiva
+  useEffect(() => {
+    if (selectedElement === null || disabled || elements[selectedElement]?.header?.type !== 'txt') {
+      return
+    }
+    addStyle({ key: "fontStyle", value: italic ? "italic" : "normal" })
+  }, [italic])
 
 
 

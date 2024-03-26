@@ -7,7 +7,7 @@ import { MainContext } from "../../../../../contexts/mainContext";
 
 export default function TextShadowSelector() {
 
-  const { elements, setElements, selectedElement } = useContext(MainContext)
+  const { elements, selectedElement, addStyle } = useContext(MainContext)
   const [checked, setChecked] = useState(false);
   const [shadowColor, setShadowColor] = useState("000000");
   const [xAxis, setXaxis] = useState(3);
@@ -17,11 +17,10 @@ export default function TextShadowSelector() {
   
   useEffect(()=>{
     if(selectedElement === null) return
-    let _elements = JSON.parse(JSON.stringify(elements));
     let value = checked ? `${xAxis}px ${yAxis}px ${distorcion}px #${shadowColor}` : "none"
-    _elements[selectedElement].style["textShadow"] = value
-    setElements(_elements)
+    addStyle({ key:"textShadow", value })
   }, [checked, xAxis, yAxis, distorcion, shadowColor])
+
 
   useEffect(()=>{
     if (selectedElement === null) return

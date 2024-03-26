@@ -5,7 +5,7 @@ import { MainContext } from "../../../../../contexts/mainContext";
 
 export default function TextColorSelector(){
 
-  const { elements, setElements, selectedElement } = useContext(MainContext)
+  const { elements, setElements, selectedElement, addStyle } = useContext(MainContext)
   const [textColor, setTextColor] = useState(null);
 
   useEffect(() => {
@@ -27,9 +27,7 @@ export default function TextColorSelector(){
     if (!textColor) {
       return
     }
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style.color = "#" + textColor
-    setElements(_elements)
+    addStyle({ key: "color", value: "#" + textColor })
 
   }, [textColor])
 

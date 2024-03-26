@@ -7,7 +7,7 @@ import './editTextStyles.css'
 
 
 export default function FontSizeSelector(){
-  const { elements, setElements, selectedElement } = useContext(MainContext)
+  const { elements, selectedElement, addStyle } = useContext(MainContext)
   
   const [size, setSize] = useState(16);
   const [disabled, setDisabled] = useState(false)
@@ -39,9 +39,7 @@ export default function FontSizeSelector(){
     if (selectedElement === null || disabled || elements[selectedElement]?.header?.type !== 'txt') {
       return
     }
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style["fontSize"] = size + "px" ;
-    setElements(_elements)
+    addStyle({ key: "fontSize", value: size + "px" })
   }, [size])
 
   const handleIncreaseSize = ()=>{

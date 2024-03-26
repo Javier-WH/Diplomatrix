@@ -6,7 +6,7 @@ import './editTextStyles.css'
 
 
 export default function FontAligmentSelector() {
-  const { elements, setElements, selectedElement } = useContext(MainContext)
+  const { elements, selectedElement, addStyle } = useContext(MainContext)
 
   const [alignLeft, setAlignLeft] = useState(false);
   const [alignCenter, setAlignCenter] = useState(false);
@@ -33,8 +33,6 @@ export default function FontAligmentSelector() {
     } else {
       setDisabled(true)
     }
-
-
   }, [selectedElement])
 
 
@@ -52,9 +50,7 @@ export default function FontAligmentSelector() {
       aling = "right"
     }
 
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style["textAlign"] = aling
-    setElements(_elements)
+    addStyle({ key: "textAlign", value: aling })
 
   }, [alignLeft, alignCenter, alignRight])
 

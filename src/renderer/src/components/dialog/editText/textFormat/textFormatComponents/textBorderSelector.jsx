@@ -7,7 +7,7 @@ import { MainContext } from "../../../../../contexts/mainContext";
 
 export default function TextBorderSelector() {
 
-  const { elements, setElements, selectedElement } = useContext(MainContext)
+  const { elements, selectedElement, addStyle, getStyle } = useContext(MainContext)
   const [checked, setChecked] = useState(false);
   const [borderColor, setBorderColor] = useState("#000000");
   const [thickness, setThickness] = useState(1);
@@ -17,56 +17,43 @@ export default function TextBorderSelector() {
     if(selectedElement === null){
       return
     }
-    const thick = elements[selectedElement].style.WebkitTextStrokeWidth
-    if(thick){
+
+    const thickValue = getStyle("WebkitTextStrokeWidth")
+    const thick = thickValue ? thickValue.replace("px", "") : null
+    const colorValue = getStyle("WebkitTextStrokeColor")
+    const color = colorValue ? colorValue.replace("#", "") : null
+
+    if(thick > 0){
       setChecked(true)
-    }else{
-      setChecked(false)
+      setThickness(thick)
+      if(color){
+        setBorderColor(color)
+      }else{
+        setBorderColor("000000")
+      }
     }
   
   },[selectedElement])
 
 
-  //vigila cunado se hace check, agrega un borde por defecto
-  useEffect(() => {
-    const thick = elements[selectedElement].style.WebkitTextStrokeWidth
-    const color = elements[selectedElement].style.WebkitTextStrokeColor
-    let _elements = JSON.parse(JSON.stringify(elements));
-
-
-    if(thick){
-      setThickness(thick.replace("px", ""))
-      setBorderColor(color.replace("#", ""))
-    }else{
-      _elements[selectedElement].style.WebkitTextStrokeWidth = '1px';
-      _elements[selectedElement].style.WebkitTextStrokeColor = 'black'
-    }
-    if(!checked){
-      _elements[selectedElement].style.WebkitTextStrokeWidth = undefined;
-
-    }
-    setElements(_elements)
-  }, [checked])
-
   //vigila cuando el valor del color del borde cambia y aplica el estilo
   useEffect(()=>{
-    if(selectedElement === null || !checked){
+    if(selectedElement === null){
       return
     }
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style.WebkitTextStrokeColor = "#" + borderColor
-    setElements(_elements)
-  }, [borderColor])
+    const value = checked ? "#" + borderColor : "#000000"
+    addStyle({ key: "WebkitTextStrokeColor", value })
+  }, [borderColor, checked])
+
 
   //vigila cuando el grosor del borde cambia y aplica el estilo
   useEffect(() => {
-    if (selectedElement === null || !checked) {
+    if (selectedElement === null) {
       return
     }
-    let _elements = JSON.parse(JSON.stringify(elements));
-    _elements[selectedElement].style.WebkitTextStrokeWidth = thickness + 'px';
-    setElements(_elements)
-  }, [thickness])
+    const value = checked ? thickness + 'px' : "0px"
+    addStyle({ key: "WebkitTextStrokeWidth", value })
+  }, [thickness, checked])
 
 
   return <div id='text-format-main-container'>
@@ -86,7 +73,7 @@ export default function TextBorderSelector() {
         </div>
       <div className="text-format-main-subiten-border-container">
           <span>Grosor del borde</span>
-        <Slider style={{ width: "100%" }} value={thickness} onChange={(e) => setThickness(e.value)} className="w-14rem" min={0} max={10} steps={10} />
+        <Slider style={{ width: "100%" }} value={thickness} onChange={(e) => setThickness(e.value)} className="w-14rem" min={0} max={20} />
         </div>
       </div>
     </div> 
