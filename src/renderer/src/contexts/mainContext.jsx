@@ -15,6 +15,17 @@ export function MainContextProvider(props) {
 
 
 
+  function addStyles(styleList) {
+    if(!styleList) return
+    let _elements = JSON.parse(JSON.stringify(elements));
+    styleList.forEach(style=>{
+      const {key, value} = style;
+      _elements[selectedElement].style[key] = value
+    })
+
+    setElements(_elements)
+  }
+
   function addStyle({ key, value }) {
     let _elements = JSON.parse(JSON.stringify(elements));
     _elements[selectedElement].style[key] = value
@@ -43,6 +54,7 @@ export function MainContextProvider(props) {
     selectedElement, 
     setSelectedElement,
     addStyle,
+    addStyles,
     getStyle
 
   }

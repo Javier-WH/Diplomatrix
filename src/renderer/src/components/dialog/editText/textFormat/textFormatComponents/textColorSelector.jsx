@@ -5,7 +5,7 @@ import { MainContext } from "../../../../../contexts/mainContext";
 
 export default function TextColorSelector(){
 
-  const { elements, setElements, selectedElement, addStyle } = useContext(MainContext)
+  const { elements, selectedElement, addStyle } = useContext(MainContext)
   const [textColor, setTextColor] = useState(null);
 
   useEffect(() => {

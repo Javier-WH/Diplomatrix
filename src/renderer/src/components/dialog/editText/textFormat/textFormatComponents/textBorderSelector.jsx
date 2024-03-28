@@ -9,44 +9,61 @@ export default function TextBorderSelector() {
 
   const { selectedElement, addStyle, getStyle } = useContext(MainContext)
   const [checked, setChecked] = useState(false);
-  const [borderColor, setBorderColor] = useState();
-  const [thickness, setThickness] = useState();
+  const [borderColor, setBorderColor] = useState(null);
+  const [thickness, setThickness] = useState(null);
+  const [fisrTime, setFirsTime] = useState(false)
+
+
+  useEffect(()=>{
+
+    if(!checked){
+      setBorderColor(null)
+      setThickness(null)
+      addStyle({ key: "WebkitTextStrokeColor", value: "none" })
+      addStyle({ key: "WebkitTextStrokeWidth", value: '0px' })
+      setFirsTime(true)
+    } else if (fisrTime){
+      setBorderColor("000000")
+      setThickness("1")
+      setFirsTime(false)
+    }
+  },[checked])
+
 
   //vigila cuando se selecciona un elemento y revisa si tiene color o grosor de borde activo
   useEffect(()=>{
-    if(selectedElement === null){
+    if(selectedElement === null) return
+
+    const thickValue = getStyle("WebkitTextStrokeWidth")
+    const colorValue = getStyle("WebkitTextStrokeColor")
+
+    if (thickValue === undefined || thickValue === "none" || colorValue === undefined ){
+      setFirsTime(true)
       return
     }
 
-    const thickValue = getStyle("WebkitTextStrokeWidth")
-    const thick = thickValue ? thickValue.replace("px", "") : 0
-    const colorValue = getStyle("WebkitTextStrokeColor")
-    const color = colorValue ? colorValue.replace("#", "") : "000000"
+    setFirsTime(false)
+    const thick = thickValue.replace("px", "") 
+    const color = colorValue.replace("#", "")
     setChecked(thick > 0)
     setThickness(thick)
     setBorderColor(color)
-  },[selectedElement])
+  },[])
 
 
   //vigila cuando el valor del color del borde cambia y aplica el estilo
   useEffect(()=>{
-    if (selectedElement === null || !borderColor){
-      return
-    }
-    
-    //const value = checked ? "#" + borderColor : "#000000"
+    if (borderColor === null ) return
+    console.log(borderColor)
     addStyle({ key: "WebkitTextStrokeColor", value: "#" + borderColor })
   }, [borderColor])
 
 
   //vigila cuando el grosor del borde cambia y aplica el estilo
   useEffect(() => {
-    if (selectedElement === null) {
-      return
-    }
-    const value = checked ? thickness + 'px' : "0px"
-    addStyle({ key: "WebkitTextStrokeWidth", value })
-  }, [thickness, checked])
+    if (thickness === null) return
+    addStyle({ key: "WebkitTextStrokeWidth", value: thickness + 'px' })
+  }, [thickness])
 
 
   return <div id='text-format-main-container'>

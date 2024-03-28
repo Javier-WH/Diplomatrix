@@ -4,10 +4,12 @@ import InsertTextButton from "./toolBar/insertText"
 import InsertImageButton from "./toolBar/insertImage"
 import FontSizeSelector from "../dialog/editText/editTextComponets/fontSizeSelector"
 import FontStyleSelector from "../dialog/editText/editTextComponets/fontStyleSelector"
+import FormatBorder from "../dialog/editImage/BoxBorder/formatBorder"
 import FontSelector from "../dialog/editText/editTextComponets/fontSelector"
 import TextFormat from "../dialog/editText/textFormat/textFormat"
 import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligtmentSelector"
 import FormatImage from "../dialog/editImage/formatImage/formatImage"
+
 
 export default function ToolBar(){
 
@@ -28,7 +30,10 @@ export default function ToolBar(){
 
       <div className="toolbar-tools-seccion">
         <InsertImageButton />
-        <FormatImage />
+        <div id="font-size-button-container">
+          <FormatImage />
+          <FormatBorder/>
+        </div>
       </div>
 
     

@@ -37,3 +37,17 @@
 .text-format-main-subiten-border-container #text-colorPicker{
   justify-self: center;
 }
+.text-format-main-subiten-check-container{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 15px;
+  margin-top: 5px;
+
+}
+.text-format-main-subiten-check-container > div{
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  font-size: 13px;
+  margin-left: 5px;
+}
