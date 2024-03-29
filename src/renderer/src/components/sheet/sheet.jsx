@@ -50,14 +50,15 @@ export default function Sheet() {
     const sheetMarginTop = e.currentTarget.getBoundingClientRect().top
     const mouseX = e.clientX;
     const mouseY = e.clientY; 
+    const scale = sheetStyle.scale
     const style = {
       style: {
         pointerEvents: "none",
         position: "absolute",
         width: `${imageWidth}px`,
         height: `${imageHeight}px`,
-        top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
-        left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
+        top: ((mouseY  - sheetMarginTop) /scale - (imageHeight / 2)) + "px",
+        left: ((mouseX  - sheetMarginLeft) /scale - (imageWidth / 2)) + 'px',
         filter: type === 'txt' ? 'brightness(3)' : 'opacity(50%)',
         border: type === 'txt' ? '1px solid black': 'tansparent',
       },
@@ -80,14 +81,14 @@ export default function Sheet() {
       const mouseX = e.clientX;
       const mouseY = e.clientY; 
       const index = elements.length;
-
+      const scale = sheetStyle.scale
 
       const style = {
         position: "absolute",
         width: imageWidth + "px",
         height: imageHeight + "px",
-        left: (mouseX - sheetMarginLeft - (imageWidth / 2)) + 'px',
-        top: (mouseY - sheetMarginTop - (imageHeight / 2)) + "px",
+        left: ((mouseX - sheetMarginLeft)/scale - (imageWidth / 2)) + 'px',
+        top: ((mouseY - sheetMarginTop)/scale - (imageHeight / 2)) + "px",
         userSelect: 'none',
         display: "flex",
         justifyContent: "center",
@@ -95,8 +96,6 @@ export default function Sheet() {
         ...(type === 'txt' && { fontFamily: "Arial" }),
         ...(type === 'txt' && { fontSize: "16px" }),
         ...(type === 'txt' && { textAlign: "center" }),
-        //WebkitTextStrokeWidth: '1px', 
-        //WebkitTextStrokeColor: 'black'
       }
 
 

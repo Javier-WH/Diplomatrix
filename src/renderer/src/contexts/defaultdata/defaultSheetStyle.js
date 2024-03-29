@@ -4,7 +4,7 @@ export default function defaultSheetStyle(){
         background : 'white',
         width: '27.94cm',
         height: '21.59cm',
-        scale: "1"
+        scale: "0.8"
       }
 
 }

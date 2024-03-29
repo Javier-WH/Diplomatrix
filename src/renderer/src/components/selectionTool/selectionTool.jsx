@@ -5,7 +5,7 @@ import EditText from "./selectionToolUtils/editText";
 import "./selectionTool.css"
 
 export default function SelectionTool(){
-  const { selectedElement, elements, setElements, setSelectedElement } = useContext(MainContext);
+  const { selectedElement, elements, setElements, setSelectedElement, sheetStyle } = useContext(MainContext);
   const [boxStyle, setBoxStyle] = useState();
   const [initialMousePosition, setInitialMousePosition] = useState(null);
   const [mouseDown, setMouseDown] = useState(false);
@@ -53,10 +53,10 @@ export default function SelectionTool(){
       const boxWidth = boxStyle.width.replace("px", "")
       const boxLeft = boxStyle.left.replace("px", "")
       const boxTop = boxStyle.top.replace("px", "")
-  
+      const scale = sheetStyle.scale
   
       if (elementClicked === 'rigth-selectorBall'){
-        const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
+        const newWidth = Number.parseFloat(boxWidth) - (Number.parseFloat(diferenceX) /scale)
         setBoxStyle({
           ...boxStyle,
           width: newWidth + "px"
@@ -64,8 +64,8 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'button-rigth-selectorBall') {
-        const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
-        const newHeight = Number.parseFloat(boxHeight) - Number.parseFloat(diferenceY)
+        const newWidth = Number.parseFloat(boxWidth) - (Number.parseFloat(diferenceX) /scale)
+        const newHeight = Number.parseFloat(boxHeight) - (Number.parseFloat(diferenceY)/scale)
         setBoxStyle({
           ...boxStyle,
           width: newWidth + "px",
@@ -74,7 +74,7 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'button-selectorBall') {
-        const newHeight = Number.parseFloat(boxHeight) - Number.parseFloat(diferenceY)
+        const newHeight = Number.parseFloat(boxHeight) - (Number.parseFloat(diferenceY)/scale)
         setBoxStyle({
           ...boxStyle,
           height: newHeight + "px"
@@ -82,8 +82,8 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'left-selectorBall') {
-        const newWidth = Number.parseFloat(boxWidth) + Number.parseFloat(diferenceX)
-        const newLeft = Number.parseFloat(boxLeft) - diferenceX
+        const newWidth = Number.parseFloat(boxWidth) + (Number.parseFloat(diferenceX)/scale)
+        const newLeft = Number.parseFloat(boxLeft) - (diferenceX /scale)
         setBoxStyle({
           ...boxStyle,
           width: (newWidth ) + "px",
@@ -92,9 +92,9 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'button-left-selectorBall') {
-        const newWidth = Number.parseFloat(boxWidth) + Number.parseFloat(diferenceX)
-        const newHeight = Number.parseFloat(boxHeight) - Number.parseFloat(diferenceY)
-        const newLeft = Number.parseFloat(boxLeft) - diferenceX
+        const newWidth = Number.parseFloat(boxWidth) + (Number.parseFloat(diferenceX)/scale)
+        const newHeight = Number.parseFloat(boxHeight) - (Number.parseFloat(diferenceY)/scale)
+        const newLeft = Number.parseFloat(boxLeft) - (diferenceX/scale)
         setBoxStyle({
           ...boxStyle,
           width: newWidth + "px",
@@ -104,8 +104,8 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'top-selectorBall') {
-        const newHeight = Number.parseFloat(boxHeight) + Number.parseFloat(diferenceY)
-        const newTop = Number.parseFloat(boxTop) - diferenceY
+        const newHeight = Number.parseFloat(boxHeight) + (Number.parseFloat(diferenceY)/scale)
+        const newTop = Number.parseFloat(boxTop) - (diferenceY /scale)
         setBoxStyle({
           ...boxStyle,
           height: newHeight + "px",
@@ -114,10 +114,10 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'top-left-selectorBall') {
-        const newWidth = Number.parseFloat(boxWidth) + Number.parseFloat(diferenceX)
-        const newHeight = Number.parseFloat(boxHeight) + Number.parseFloat(diferenceY)
-        const newTop = Number.parseFloat(boxTop) - diferenceY
-        const newLeft = Number.parseFloat(boxLeft) - diferenceX
+        const newWidth = Number.parseFloat(boxWidth) + (Number.parseFloat(diferenceX) /scale)
+        const newHeight = Number.parseFloat(boxHeight) + (Number.parseFloat(diferenceY) /scale)
+        const newTop = Number.parseFloat(boxTop) - (diferenceY /scale)
+        const newLeft = Number.parseFloat(boxLeft) - (diferenceX /scale)
         setBoxStyle({
           ...boxStyle,
           height: newHeight + "px",
@@ -128,9 +128,9 @@ export default function SelectionTool(){
       }
   
       if (elementClicked === 'top-right-selectorBall') {
-        const newWidth = Number.parseFloat(boxWidth) - Number.parseFloat(diferenceX)
-        const newHeight = Number.parseFloat(boxHeight) + Number.parseFloat(diferenceY)
-        const newTop = Number.parseFloat(boxTop) - diferenceY
+        const newWidth = Number.parseFloat(boxWidth) - (Number.parseFloat(diferenceX) /scale)
+        const newHeight = Number.parseFloat(boxHeight) + (Number.parseFloat(diferenceY) /scale)
+        const newTop = Number.parseFloat(boxTop) - (diferenceY /scale)
   
         setBoxStyle({
           ...boxStyle,
@@ -142,8 +142,8 @@ export default function SelectionTool(){
   
       //mover la imagen
       if (elementClicked === 'selectionTool-box') {
-        const left = boxLeft - diferenceX
-        const top = boxTop - diferenceY
+        const left = boxLeft - (diferenceX / scale)
+        const top = boxTop - (diferenceY / scale)
         setBoxStyle({
           ...boxStyle,
           left: left + 'px',
@@ -152,6 +152,8 @@ export default function SelectionTool(){
         })
       }
   
+
+
     };
 
    

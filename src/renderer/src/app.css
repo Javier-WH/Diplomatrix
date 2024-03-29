@@ -1,23 +1,41 @@
 body{
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: var(--blue-200);
+
 }
 
-
 #app-main-containert{
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 101px auto;
   width: 100vw;
   height: 100vh;
 }
 
 #sheet-container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 }
 
+#toolbar-menu-main-container{
+  position: absolute;
+  top: 0;
+
+  z-index: 999999;
+}
+
+#statusBar-container{
+  position: absolute;
+  bottom: 0;
+}
+
+.p-overlaypanel{
+    z-index: 99999999 !important;
+}

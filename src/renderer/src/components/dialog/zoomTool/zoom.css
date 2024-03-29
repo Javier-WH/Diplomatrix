@@ -1,0 +1,8 @@
+#zoomTool-container{
+  color: var(--primary-color);
+  width: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}

@@ -9,6 +9,7 @@ import FontSelector from "../dialog/editText/editTextComponets/fontSelector"
 import TextFormat from "../dialog/editText/textFormat/textFormat"
 import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligtmentSelector"
 import FormatImage from "../dialog/editImage/formatImage/formatImage"
+import ZoomTool from "../dialog/zoomTool/zoomTool"
 
 
 export default function ToolBar(){

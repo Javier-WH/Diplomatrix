@@ -54,7 +54,6 @@ export default function TextBorderSelector() {
   //vigila cuando el valor del color del borde cambia y aplica el estilo
   useEffect(()=>{
     if (borderColor === null ) return
-    console.log(borderColor)
     addStyle({ key: "WebkitTextStrokeColor", value: "#" + borderColor })
   }, [borderColor])
 
