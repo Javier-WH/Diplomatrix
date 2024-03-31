@@ -9,6 +9,7 @@ import FontSelector from "../dialog/editText/editTextComponets/fontSelector"
 import TextFormat from "../dialog/editText/textFormat/textFormat"
 import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligtmentSelector"
 import FormatImage from "../dialog/editImage/formatImage/formatImage"
+import CreateImageButton from "./toolBar/createImageButton"
 
 
 export default function ToolBar(){
@@ -30,10 +31,12 @@ export default function ToolBar(){
 
       <div className="toolbar-tools-seccion">
         <InsertImageButton />
+
         <div id="font-size-button-container">
           <FormatImage />
           <FormatBorder/>
         </div>
+        <CreateImageButton />
       </div>
 
     

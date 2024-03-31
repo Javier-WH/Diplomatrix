@@ -6,7 +6,7 @@ import Dialogs from "../dialog/dialogProvider.jsx";
 
 
 export default function Sheet() {
-  const { elements, setElements, sheetStyle, newElementData, setNewElemntData } = useContext(MainContext);
+  const { elements, setElements, sheetStyle, newElementData, setNewElemntData, sheetRef } = useContext(MainContext);
  
   const [ cursorImage, setCursorImage ] = useState({});
 
@@ -121,7 +121,7 @@ export default function Sheet() {
 
 
   return (
-    <div id="Sheet" style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage}>
+    <div id="Sheet" ref={sheetRef} style={sheetStyle} onClick={onClick} onMouseMove={onMouseMove} onMouseLeave={defaultMouseMoveImage}>
       {elements.map((data, i) => <Element elemetData={data}  key={`e-${i}`}/>)}
       <img src={cursorImage.image} alt="" style={cursorImage.style}  /> 
       <SelectionTool />

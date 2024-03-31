@@ -42,9 +42,25 @@ function App() {
       overflow: 'hidden',
       height: isIncreaseHeigthNeeded ? (scale * 1000) + "px" : "100%",
       width: isIncreaseWidthNeeded ? (scale * 1300) + "px" : "100%",
-      paddingLeft: isIncreaseWidthNeeded ? (scale * 80) + "px" : "0",
+      //paddingLeft: isIncreaseWidthNeeded ? (scale * 80) + "px" : "0",
  
     })
+
+    
+    //con esto el scroll se queda en el centro cuando se hace zoom
+    let scrollPanel = document.getElementById("scroll-container");
+    if (isIncreaseHeigthNeeded){
+      let scrollHeight = scrollPanel.scrollHeight;
+      let clientHeight = scrollPanel.clientHeight;
+      let scrollPosition = scrollHeight / 2 - clientHeight / 2;
+      scrollPanel.scrollTop = scrollPosition;
+    }
+    if (isIncreaseWidthNeeded){
+      let scrollWidth = scrollPanel.scrollWidth;
+      let clientWidth = scrollPanel.clientWidth;
+      let scrollPositionX = scrollWidth / 2 - clientWidth / 2;
+      scrollPanel.scrollLeft = scrollPositionX;
+    }
   },[sheetStyle])
 
   return <>

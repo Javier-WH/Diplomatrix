@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useRef } from "react"
 import PropTypes from "prop-types"
 import defaultSheetStyle from "./defaultdata/defaultSheetStyle";
 
@@ -12,6 +12,7 @@ export function MainContextProvider(props) {
   const [mouseCords, SetMouseCords] = useState({ x: 20, y: 0 });
   const [newElementData, setNewElemntData] = useState(null);
   const [selectedElement, setSelectedElement] = useState(null);
+  const sheetRef = useRef(null);
 
 
 
@@ -55,8 +56,8 @@ export function MainContextProvider(props) {
     setSelectedElement,
     addStyle,
     addStyles,
-    getStyle
-
+    getStyle,
+    sheetRef
   }
 
   return (
