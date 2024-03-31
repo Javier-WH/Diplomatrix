@@ -30,7 +30,8 @@ function App() {
     const screenHeight = window.innerHeight;
 
     //esta es la condición que se debe cumplir para aplicar los cambios
-    const isNeeded = sheetWidth > screenWidh - 5 || sheetHeight > screenHeight - 120
+    const isIncreaseWidthNeeded = sheetWidth > screenWidh - 5 
+    const isIncreaseHeigthNeeded = sheetHeight > screenHeight - 120
 
     //estos son los parametros que mejor sirvieron para ajustar el zoom
     setMarginStyle({
@@ -39,9 +40,9 @@ function App() {
       justifyContent: "center",
       flexDirection: "column",
       overflow: 'hidden',
-      height: isNeeded ? (scale * 1000) + "px" : "100%",
-      width: isNeeded ? (scale * 1300) + "px" : "100%",
-      paddingLeft: isNeeded ? (scale * 80) + "px" : "0",
+      height: isIncreaseHeigthNeeded ? (scale * 1000) + "px" : "100%",
+      width: isIncreaseWidthNeeded ? (scale * 1300) + "px" : "100%",
+      paddingLeft: isIncreaseWidthNeeded ? (scale * 80) + "px" : "0",
  
     })
   },[sheetStyle])

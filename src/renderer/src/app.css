@@ -4,7 +4,7 @@ body{
   width: 100vw;
   height: 100vh;
   background: var(--blue-200);
-  overflow: auto;
+  overflow: hidden;
 }
 
 #scroll-container{
