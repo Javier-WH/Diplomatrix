@@ -6,7 +6,7 @@ import html2canvas from "html2canvas";
 
 export default function CreateImageButton(){
 
-  const { sheetRef, setSelectedElement, sheetStyle, setSheetStyle } = useContext(MainContext)
+  const { sheetRef, setSelectedElement, sheetStyle, setSheetStyle, setRefreshScale } = useContext(MainContext)
 
 
   
@@ -17,6 +17,7 @@ export default function CreateImageButton(){
       ...sheetStyle,
       scale: "1"
     })
+    setRefreshScale(true)
 
     //el timeout sirve para que se pueda limpiar el selectedElement antes de crear la imagen
     const timer = setTimeout(() => {
