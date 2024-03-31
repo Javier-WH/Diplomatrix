@@ -4,38 +4,44 @@ body{
   width: 100vw;
   height: 100vh;
   background: var(--blue-200);
+  overflow: auto;
+}
 
+#scroll-container{
+  height: 87.5%;
+  overflow: auto;
 }
 
 #app-main-containert{
   width: 100vw;
   height: 100vh;
+
 }
 
-#sheet-container{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.sheet-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-#toolbar-menu-main-container{
-  position: absolute;
-  top: 0;
 
+#toolbar-menu-main-container{
+  position: sticky;
+  top: 0;
   z-index: 999999;
 }
 
 #statusBar-container{
   position: absolute;
+  margin-bottom: 0;
+  padding-bottom: 0;
   bottom: 0;
 }
 
+.p-dropdown-panel,
+.p-colorpicker-panel,
 .p-overlaypanel{
     z-index: 99999999 !important;
 }

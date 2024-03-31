@@ -3,7 +3,6 @@ import { MainContext } from "../../contexts/mainContext.jsx";
 import Element from "../element/element.jsx"
 import SelectionTool from "../selectionTool/selectionTool.jsx";
 import Dialogs from "../dialog/dialogProvider.jsx";
-import "./test.css"
 
 
 export default function Sheet() {
