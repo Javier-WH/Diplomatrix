@@ -188,6 +188,7 @@ export default function SelectionTool(){
   //borra el elemento seleccionado
   useEffect(()=>{
     if(selectedElement == null){
+      op.current.hide()
       return
     }
 
@@ -242,6 +243,8 @@ export default function SelectionTool(){
       op.current.show(e)
     }
   }
+
+  
 
 
   return<>
