@@ -42,6 +42,42 @@ export function MainContextProvider(props) {
     return elements[selectedElement]?.style[key]
   }
   
+  function getHeader(key){
+    if (!key) {
+      return
+    }
+
+    return elements[selectedElement]?.header[key]
+  }
+
+  function addHeader({ key, value }) {
+    let _elements = JSON.parse(JSON.stringify(elements));
+    _elements[selectedElement].header[key] = value
+    setElements(_elements)
+  }
+
+  function fullEditElemtnt({header, style}){
+
+    let _elements = JSON.parse(JSON.stringify(elements));
+
+    if(header){
+      const _header = _elements[selectedElement].header
+      _elements[selectedElement].header = {
+        ..._header,
+        ...header
+      }
+    }
+
+    if(style){
+      const _style = _elements[selectedElement].style
+      _elements[selectedElement].style = {
+        ..._style,
+        ...style
+      }
+    }
+
+    setElements(_elements)
+  }
 
 
   const values = {
@@ -60,7 +96,10 @@ export function MainContextProvider(props) {
     getStyle,
     refreshScale,
     setRefreshScale,
-    sheetRef
+    sheetRef,
+    getHeader,
+    addHeader,
+    fullEditElemtnt
   }
 
   return (
