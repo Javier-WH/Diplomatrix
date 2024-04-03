@@ -5,12 +5,14 @@ import { Checkbox } from "primereact/checkbox";
 import { useState, useEffect, useContext } from "react"
 import { MainContext } from "../../../../../contexts/mainContext";
 import { Button } from 'primereact/button';
+import { Slider } from 'primereact/slider';
+import "./backGroundSelector.css";
 
 
 /*
   0 || undefined = no color,
   1 = solid color,
-  2 = gradientColor
+  2 = gradient
 */
 
 export default function BackgroundSelector() {
@@ -19,7 +21,7 @@ export default function BackgroundSelector() {
   const [checked, setChecked] = useState(false);
   const [backGroundColor, setBackGroundColor] = useState(null);
   const [backGroundType, setBackGroundType] = useState("0")
-
+  const [transparentValue, setTrasparentValue] = useState(0)
 
   useEffect(()=>{
 
@@ -45,18 +47,26 @@ export default function BackgroundSelector() {
     setBackGroundType(type)
     setChecked(!(type === "0" || type === undefined))
 
-    switch (type) {
-      case "1":
-        const color = getStyle("backgroundColor")?.replace("#" , "")
-        setBackGroundColor(color)
-        break;
-    
-      default:
-        const bgColor = "FFFFFF"
-        setBackGroundColor(bgColor)
-        setBackGroundType("1")
-        break;
+    if(type === "1"){
+      let color = getStyle("backgroundColor")?.replace("#", "")
+      if(color.length > 6){
+        color = color.slice(0, -2);
+      }
+      setBackGroundColor(color)
+      
+      const Tvalue = getHeader("transparentValue")
+      if(Tvalue != undefined){
+
+        setTrasparentValue(Tvalue)
+      }
+
+    }else{
+      const bgColor = "FFFFFF"
+      setBackGroundColor(bgColor)
+      setBackGroundType("1")
     }
+
+
 
   },[])
 
@@ -75,6 +85,7 @@ export default function BackgroundSelector() {
   }, [backGroundColor, checked])
 
   
+  //maneja el click en el boton de gradiant
   const handleOnClickGradiant =()=>{
     if (backGroundType === "1"){
       addHeader({ key: "backgroundColor", value: "2" })
@@ -84,6 +95,28 @@ export default function BackgroundSelector() {
       setBackGroundType("1")
     }
   }
+
+  //maneja la trasparencia
+  useEffect(()=>{
+    if (backGroundType !== "1" || !checked) return
+
+    const color = backGroundColor.length > 6 ? backGroundColor.slice(0, -2) : backGroundColor
+
+    const value = Math.abs(transparentValue - 255)
+    const hexValue = value.toString(16).toUpperCase();
+    
+    const cleanHexValue = hexValue.length === 1 ? `0${hexValue}` : hexValue
+
+
+    const header = {
+      backgroundColor: "1",
+      transparentValue
+    }
+    const style  = {
+      backgroundColor: `#${color}${cleanHexValue}`
+    }
+    fullEditElemtnt({header, style })
+  }, [transparentValue, backGroundColor])
 
   return <div id='text-format-main-container'>
     <div className='text-format-item-container'>
@@ -98,9 +131,15 @@ export default function BackgroundSelector() {
         <Button icon={getSVGIcon("gradient")} severity={backGroundType === "2" ? "" : "secondary" } rounded aria-label="Filter" onClick={handleOnClickGradiant}/>
       </div>
 
-      <div className="text-format-main-subiten-border-container" style={{ display: backGroundType === "1" ? "block" : "none" }}>
+      <div className="background-selector-subiten-container" style={{ display: backGroundType === "1" ? "block" : "none" }}>
         <span>Color del Fondo</span>
         <ColorPicker id="text-colorPicker" value={backGroundColor} onChange={(e) => setBackGroundColor(e.value)} />
+      </div>
+      <div className="background-selector-subiten-container" style={{ display: backGroundType === "1" ? "block" : "none" }}>
+        <span>Trasparencia</span>
+        <div >
+          <Slider value={transparentValue} onChange={(e) => setTrasparentValue(e.value)} min="0" max="255"/>
+        </div>
       </div>
 
     </div>

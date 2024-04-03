@@ -1,0 +1,22 @@
+.background-selector-subiten-container{
+  width: 100%;
+
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+
+}
+.background-selector-subiten-container > *{
+  display: flex !important;
+  align-items: center !important;
+  width: 100%;
+  margin-bottom: 10px;
+
+}
+
+.background-selector-subiten-container > * > div{
+  width: 100%;
+
+  display: flex !important;
+  align-items: center !important;
+
+}

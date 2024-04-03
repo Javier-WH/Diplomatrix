@@ -28,5 +28,6 @@
 .toolbar-tools-seccion > div{
   padding-right: 5px;
   padding-left: 5px;
-
+  color: rgba(141, 244, 28);
+   color: rgba(141, 244, 28, 0.633);
 }
