@@ -23,7 +23,8 @@
     "font-list": "^1.5.1",
     "html2canvas": "^1.4.1",
     "primeicons": "^6.0.1",
-    "primereact": "^10.5.1"
+    "primereact": "^10.5.1",
+    "react-best-gradient-color-picker": "^3.0.7"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^1.0.2",

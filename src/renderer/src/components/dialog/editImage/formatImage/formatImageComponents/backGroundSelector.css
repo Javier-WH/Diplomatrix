@@ -1,8 +1,16 @@
 .background-selector-subiten-container{
   width: 100%;
-
   display: grid !important;
   grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+
+}
+
+.background-selector-main-subiten-check-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
 
 }
 .background-selector-subiten-container > *{
@@ -10,13 +18,19 @@
   align-items: center !important;
   width: 100%;
   margin-bottom: 10px;
-
 }
 
 .background-selector-subiten-container > * > div{
   width: 100%;
-
   display: flex !important;
   align-items: center !important;
 
+}
+.background-selector-subiten-container-slider{
+  width: 20px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
