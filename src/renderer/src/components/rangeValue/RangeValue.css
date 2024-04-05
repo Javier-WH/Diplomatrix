@@ -1,0 +1,10 @@
+.range-value{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 15px;
+}
+.range-value > input{
+  text-align: center;
+}

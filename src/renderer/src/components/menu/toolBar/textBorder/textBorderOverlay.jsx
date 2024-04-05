@@ -1,22 +1,24 @@
 import { useRef, useState, useContext, useEffect } from 'react';
-import { MainContext } from '../../../../contexts/mainContext';
+import { MainContext } from '../../../../contexts/mainContext.jsx';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Button } from 'primereact/button';
 import getSVGIcon from "../../../../icons/iconList.jsx"
-import BackGroundColorSelector from './formatImageComponents/backGroundSelector.jsx';
+import TextBorderSelector from './components/textBorderSelector.jsx'
 
 
 
 
-export default function FormatImage() {
+export default function TextBorderOverlay() {
   const op = useRef(null);
-  const { selectedElement} = useContext(MainContext)
+  const { selectedElement, elements } = useContext(MainContext)
   const [disabled, setDisabled] = useState(false)
 
 
 
   useEffect(() => {
-    if (selectedElement === null) {
+    const type = elements[selectedElement]?.header.type
+
+    if (selectedElement === null || type !== 'txt') {
       op.current.hide()
       setDisabled(true)
       return
@@ -29,9 +31,9 @@ export default function FormatImage() {
 
   return (
     <div className="card flex justify-content-center">
-      <Button type="button" icon={getSVGIcon("backGroudColor")} onClick={(e) => op.current.toggle(e)} disabled={disabled} />
+      <Button type="button" icon={getSVGIcon("textBorder")} onClick={(e) => op.current.toggle(e)} disabled={disabled} />
       <OverlayPanel ref={op}>
-        <BackGroundColorSelector /> 
+        <TextBorderSelector /> 
       </OverlayPanel>
     </div>
   );

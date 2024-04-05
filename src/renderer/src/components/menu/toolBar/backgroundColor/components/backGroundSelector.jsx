@@ -5,15 +5,18 @@ import { Button } from 'primereact/button';
 import ColorPicker from 'react-best-gradient-color-picker'
 import "./backGroundSelector.css";
 
-
-
 export default function BackgroundSelector() {
 
   const { addStyle, getStyle } = useContext(MainContext)
   const [backgroundColor, setBackgroundColor] = useState('rgba(255,255,255,1');
   const [fisrtTime, setFisrtTime] = useState(false);
 
-
+  const customLocales = {
+    CONTROLS: {
+      SOLID: 'Sólido',
+      GRADIENT: 'Gradiente',
+    }
+  }
 
 
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function BackgroundSelector() {
         <Button icon="pi pi-refresh" rounded text aria-label="Filter" onClick={handleReset}/>
     </div>
     <div>
-      <ColorPicker value={backgroundColor} onChange={setBackgroundColor} />
+      <ColorPicker value={backgroundColor} onChange={setBackgroundColor} hidePresets={true} locales={customLocales} />
     </div>
 
   </div>
