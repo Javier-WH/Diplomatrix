@@ -4,7 +4,16 @@
   align-items: center;
   column-gap: 10px;
   margin-top: 15px;
+  position: relative;
 }
 .range-value > input{
+  text-align: center;
+}
+
+.range-value-title{
+  top: -15px;
+  position: absolute;
+  font-size: 12px;
+  width: 100%;
   text-align: center;
 }

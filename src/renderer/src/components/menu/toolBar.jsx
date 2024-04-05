@@ -11,6 +11,7 @@ import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligt
 import BackGroundColorOverlay from "./toolBar/backgroundColor/backgroudColorSelector"
 import TextColorOverlay from "./toolBar/TextColorColor/textColorSelector"
 import TextBorderOverlay from "./toolBar/textBorder/textBorderOverlay"
+import TextShadowOverlay from "./toolBar/textShadow/textShadowSelector"
 import CreateImageButton from "./toolBar/createImageButton"
 
 
@@ -38,6 +39,7 @@ export default function ToolBar(){
           <BackGroundColorOverlay/>
           <TextColorOverlay/>
           <TextBorderOverlay />
+          <TextShadowOverlay />
           <FormatBorder/>
         </div>
         <CreateImageButton />

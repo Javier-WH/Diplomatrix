@@ -59,7 +59,7 @@ export default function TextBorderSelector() {
     </div>
     <div>
       <ColorPicker value={borderColor} onChange={setBorderColor} hidePresets={true} hideColorTypeBtns={true} />
-      <RangeValue value={borderWidth} setValue={setBorderWidth} max={"10"}/>
+      <RangeValue value={borderWidth} setValue={setBorderWidth} max={10}/>
     </div>
 
   </div>
