@@ -11,9 +11,9 @@ export default function TextShadowSelector() {
   const { addStyle, getStyle } = useContext(MainContext)
   const [shadowColor, setShadowColor] = useState('rgba(255,255,255,1');
   const [fisrtTime, setFisrtTime] = useState(false);
-  const [valueY, setValueY] = useState("1") 
-  const [valueX, setValueX] = useState("1") 
-  const [distorcion, setDistorcion] = useState("1") 
+  const [valueY, setValueY] = useState(1) 
+  const [valueX, setValueX] = useState(1) 
+  const [distorcion, setDistorcion] = useState(1) 
 
   useEffect(() => {
     if (fisrtTime) {

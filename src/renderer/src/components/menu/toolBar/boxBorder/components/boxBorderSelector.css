@@ -1,0 +1,105 @@
+.background-selector-subiten-container{
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+
+}
+
+.background-selector-main-subiten-check-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+
+}
+.background-selector-subiten-container > *{
+  display: flex !important;
+  align-items: center !important;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.background-selector-subiten-container > * > div{
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+
+}
+.background-selector-subiten-container-slider{
+  width: 20px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.border-style-option{
+  width: 200px;
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+
+}
+
+.border-style-option:hover{
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.border-style-option::before{
+  content: "";
+  display: block;
+  width: 70px;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.border-style-option[value="none"]::before{
+ border-bottom: 5px none var(--surface-200);
+}
+
+.border-style-option[value="hidden"]::before{
+ border-bottom: 5px hidden  var(--surface-200);
+}
+.border-style-option[value="dotted"]::before{
+ border-bottom: 5px dotted  var(--surface-200);
+}
+
+.border-style-option[value="dashed"]::before{
+ border-bottom: 5px dashed  var(--surface-200);
+}
+
+.border-style-option[value="solid"]::before{
+ border-bottom: 5px solid  var(--surface-200);
+}
+
+.border-style-option[value="double"]::before{
+ border-bottom: 5px double  var(--surface-200);
+}
+
+.border-style-option[value="groove"]::before{
+ border-bottom: 5px groove  var(--surface-200);
+}
+
+.border-style-option[value="ridge"]::before{
+ border-bottom: 5px ridge  var(--surface-200);
+}
+
+.border-style-option[value="inset"]::before{
+ border-bottom: 5px inset  var(--surface-200);
+}
+
+.border-style-option[value="outset"]::before{
+ border-bottom: 5px outset  var(--surface-200);
+}
+
+.border-style-option[value="initial"]::before{
+ border-bottom: 5px initial  var(--surface-200);
+}
+.border-style-option[value="inherit"]::before{
+ border-bottom: 5px inherit  var(--surface-200);
+}

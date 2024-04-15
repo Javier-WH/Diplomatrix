@@ -3,6 +3,7 @@ import { InputNumber } from 'primereact/inputnumber';
 import PropTypes from "prop-types"
 import "./RangeValue.css"
 
+
 export default function RangeValue({value, setValue, min = 0, max = 100, title =""}){
   
   return <div className="range-value">
@@ -16,7 +17,7 @@ export default function RangeValue({value, setValue, min = 0, max = 100, title =
 
 
 RangeValue.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.number,
   setValue: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,

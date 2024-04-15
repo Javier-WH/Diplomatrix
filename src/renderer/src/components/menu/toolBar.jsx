@@ -12,6 +12,7 @@ import BackGroundColorOverlay from "./toolBar/backgroundColor/backgroudColorSele
 import TextColorOverlay from "./toolBar/TextColorColor/textColorSelector"
 import TextBorderOverlay from "./toolBar/textBorder/textBorderOverlay"
 import TextShadowOverlay from "./toolBar/textShadow/textShadowSelector"
+import BoxBorderOverlay from "./toolBar/boxBorder/boxBorderSelector"
 import CreateImageButton from "./toolBar/createImageButton"
 
 
@@ -40,7 +41,8 @@ export default function ToolBar(){
           <TextColorOverlay/>
           <TextBorderOverlay />
           <TextShadowOverlay />
-          <FormatBorder/>
+          <BoxBorderOverlay />
+         {/*<FormatBorder/>*/}
         </div>
         <CreateImageButton />
       </div>
