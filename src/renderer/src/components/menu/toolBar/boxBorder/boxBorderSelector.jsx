@@ -3,7 +3,7 @@ import { MainContext } from '../../../../contexts/mainContext.jsx';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Button } from 'primereact/button';
 import getSVGIcon from "../../../../icons/iconList.jsx"
-import BackGroundColorSelector from './components/backGroundSelector.jsx'
+import BorderSelector from './components/borderSelector.jsx'
 
 
 
@@ -31,7 +31,7 @@ export default function BoxBorderOverlay() {
     <div className="card flex justify-content-center">
       <Button type="button" icon={getSVGIcon("border")} onClick={(e) => op.current.toggle(e)} disabled={disabled} />
       <OverlayPanel ref={op}>
-        <BackGroundColorSelector /> 
+        <BorderSelector /> 
       </OverlayPanel>
     </div>
   );

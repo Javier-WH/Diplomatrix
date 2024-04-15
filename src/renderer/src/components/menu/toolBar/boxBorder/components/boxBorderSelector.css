@@ -40,6 +40,7 @@
   padding: 10px;
   position: relative;
   cursor: pointer;
+  border-radius: 5px;
 
 }
 
@@ -48,16 +49,9 @@
   color: white;
 }
 
-.border-style-option::before{
-  content: "";
-  display: block;
-  width: 70px;
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-}
 
+
+/*
 .border-style-option[value="none"]::before{
  border-bottom: 5px none var(--surface-200);
 }
@@ -103,3 +97,4 @@
 .border-style-option[value="inherit"]::before{
  border-bottom: 5px inherit  var(--surface-200);
 }
+*/

@@ -1,18 +1,19 @@
 import getSVGIcon from "../../../../../icons/iconList"
-import { useState, useEffect, useContext, useRef } from "react"
+import { useState, useEffect, useContext } from "react"
 import { MainContext } from "../../../../../contexts/mainContext";
 import { Button } from 'primereact/button';
 import ColorPicker from 'react-best-gradient-color-picker'
 import RangeValue from "../../../../rangeValue/RangeValue";
-import { OverlayPanel } from 'primereact/overlaypanel';
+import BorderStyleSelector from "./borderStyleSelector/borderStyleSelector";
+
 //import OverlayColorPicker from "../../../../overlayColorPicker/overlayColorPicker";
 import "./boxBorderSelector.css";
 
 export default function BoxBorderSelector() {
 
-  const op = useRef(null);
+
   const { addStyle, getStyle } = useContext(MainContext)
-  const [BorderColor, setBorderColor] = useState('rgba(255,255,255,1');
+  const [BorderColor, setBorderColor] = useState('rgba(0,0,0,1');
   const [BrderWidth, setBorderWidth] = useState('1');
   const [BorderType, setBorderType] = useState("solid")
   const [fisrtTime, setFisrtTime] = useState(false);
@@ -37,7 +38,8 @@ export default function BoxBorderSelector() {
 
   useEffect(() => {
     const style = getStyle("border");
-    if (style === "border") return
+
+    if (!style) return
 
     const borderParts = style.split(' ');
     const borderWidth = borderParts[0].replace("px", "");
@@ -47,18 +49,14 @@ export default function BoxBorderSelector() {
     setBorderColor(borderColor);
     setBorderWidth(borderWidth);
     setBorderType(borderType);
-    
+
   }, [])
 
   const handleReset = () => {
     addStyle({ key: "border", value: "none" })
   }
 
-  const handleBorderStyle = (value)=>{
-    setBorderType(value)
-    op.current.hide();
 
-  }
 
   return <div id='text-format-main-container'>
     <div className='text-format-item-container'>
@@ -69,23 +67,13 @@ export default function BoxBorderSelector() {
       <Button icon="pi pi-refresh" rounded text aria-label="Filter" onClick={handleReset} />
     </div>
     <div >
-      <ColorPicker value={BorderColor} onChange={setBorderColor} hidePresets={true} locales={customLocales} />
+      <ColorPicker value={BorderColor} onChange={setBorderColor} hidePresets={true} hideColorTypeBtns={true}  locales={customLocales} />
       <br />
+
       <RangeValue value={BrderWidth} setValue={setBorderWidth} title="Grosor" />
-       <br />
-      <Button type="button" icon={getSVGIcon("borderStyle")} label="Estilo" onClick={(e) => op.current.toggle(e)} />
-      <OverlayPanel ref={op}>
-        <div value="none"  className="border-style-option" onClick={()=>handleBorderStyle("none")}>None</div>
-        <div value="hidden" className="border-style-option" onClick={()=>handleBorderStyle("hidden")}>Hidden</div>
-        <div value="dotted" className="border-style-option" onClick={()=>handleBorderStyle("dotted")}>Dotted</div>
-        <div value="dashed" className="border-style-option" onClick={()=>handleBorderStyle("dashed")}>Dashed</div>
-        <div value="solid" className="border-style-option" onClick={()=>handleBorderStyle("solid")}>Solid</div>
-        <div value="double" className="border-style-option" onClick={()=>handleBorderStyle("double")}>Double</div>
-        <div value="groove" className="border-style-option" onClick={()=>handleBorderStyle("groove")}>Groove</div>
-        <div value="ridge" className="border-style-option" onClick={()=>handleBorderStyle("ridge")}>Ridge</div>
-        <div value="inset" className="border-style-option" onClick={()=>handleBorderStyle("inset")}>Inset</div>
-        <div value="outset" className="border-style-option" onClick={()=>handleBorderStyle("outset")}>Outset</div>
-      </OverlayPanel>
+      <br />
+      <BorderStyleSelector BorderType={BorderType} setBorderType={setBorderType} />
+
     </div>
 
   </div>
