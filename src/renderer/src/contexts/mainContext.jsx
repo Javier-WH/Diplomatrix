@@ -79,6 +79,22 @@ export function MainContextProvider(props) {
     setElements(_elements)
   }
 
+function deleteStyle(keys) {
+  if (!keys || !elements[selectedElement] || !elements[selectedElement].style) {
+    return;
+  }
+
+  let _elements = JSON.parse(JSON.stringify(elements));
+
+  for (let key of keys) {
+    if (key in _elements[selectedElement].style) {
+      delete _elements[selectedElement].style[key];
+    }
+  }
+
+  setElements(_elements);
+}
+
   
 
   const values = {
@@ -100,7 +116,8 @@ export function MainContextProvider(props) {
     sheetRef,
     getHeader,
     addHeader,
-    fullEditElemtnt
+    fullEditElemtnt,
+    deleteStyle
   }
 
   return (

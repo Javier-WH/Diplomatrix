@@ -49,52 +49,17 @@
   color: white;
 }
 
-
-
-/*
-.border-style-option[value="none"]::before{
- border-bottom: 5px none var(--surface-200);
+.border-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
 }
 
-.border-style-option[value="hidden"]::before{
- border-bottom: 5px hidden  var(--surface-200);
-}
-.border-style-option[value="dotted"]::before{
- border-bottom: 5px dotted  var(--surface-200);
+.border-item-container > div{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
 }
 
-.border-style-option[value="dashed"]::before{
- border-bottom: 5px dashed  var(--surface-200);
-}
-
-.border-style-option[value="solid"]::before{
- border-bottom: 5px solid  var(--surface-200);
-}
-
-.border-style-option[value="double"]::before{
- border-bottom: 5px double  var(--surface-200);
-}
-
-.border-style-option[value="groove"]::before{
- border-bottom: 5px groove  var(--surface-200);
-}
-
-.border-style-option[value="ridge"]::before{
- border-bottom: 5px ridge  var(--surface-200);
-}
-
-.border-style-option[value="inset"]::before{
- border-bottom: 5px inset  var(--surface-200);
-}
-
-.border-style-option[value="outset"]::before{
- border-bottom: 5px outset  var(--surface-200);
-}
-
-.border-style-option[value="initial"]::before{
- border-bottom: 5px initial  var(--surface-200);
-}
-.border-style-option[value="inherit"]::before{
- border-bottom: 5px inherit  var(--surface-200);
-}
-*/
