@@ -17,7 +17,7 @@ export default function RangeValue({value, setValue, min = 0, max = 100, title =
 
 
 RangeValue.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.any,
   setValue: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,

@@ -7,7 +7,7 @@ import defaultSheetStyle from "./defaultdata/defaultSheetStyle";
 export const MainContext = createContext();
 
 export function MainContextProvider(props) {
-  const [elements, setElements, ] = useState([])
+  const [elements, setElements,] = useState([])
   const [sheetStyle, setSheetStyle] = useState(defaultSheetStyle());
   const [mouseCords, SetMouseCords] = useState({ x: 20, y: 0 });
   const [newElementData, setNewElemntData] = useState(null);
@@ -18,10 +18,10 @@ export function MainContextProvider(props) {
 
 
   function addStyles(styleList) {
-    if(!styleList) return
+    if (!styleList) return
     let _elements = JSON.parse(JSON.stringify(elements));
-    styleList.forEach(style=>{
-      const {key, value} = style;
+    styleList.forEach(style => {
+      const { key, value } = style;
       _elements[selectedElement].style[key] = value
     })
 
@@ -34,15 +34,15 @@ export function MainContextProvider(props) {
     setElements(_elements)
   }
 
-  function getStyle(key){
-    if(!key){
+  function getStyle(key) {
+    if (!key) {
       return
     }
 
     return elements[selectedElement]?.style[key]
   }
-  
-  function getHeader(key){
+
+  function getHeader(key) {
     if (!key) {
       return
     }
@@ -56,11 +56,11 @@ export function MainContextProvider(props) {
     setElements(_elements)
   }
 
-  function fullEditElemtnt({header, style}){
+  function fullEditElemtnt({ header, style }) {
 
     let _elements = JSON.parse(JSON.stringify(elements));
 
-    if(header){
+    if (header) {
       const _header = _elements[selectedElement].header
       _elements[selectedElement].header = {
         ..._header,
@@ -68,7 +68,7 @@ export function MainContextProvider(props) {
       }
     }
 
-    if(style){
+    if (style) {
       const _style = _elements[selectedElement].style
       _elements[selectedElement].style = {
         ..._style,
@@ -79,23 +79,24 @@ export function MainContextProvider(props) {
     setElements(_elements)
   }
 
-function deleteStyle(keys) {
-  if (!keys || !elements[selectedElement] || !elements[selectedElement].style) {
-    return;
-  }
-
-  let _elements = JSON.parse(JSON.stringify(elements));
-
-  for (let key of keys) {
-    if (key in _elements[selectedElement].style) {
-      delete _elements[selectedElement].style[key];
+  function deleteStyle(keys) {
+    if (!keys || !elements[selectedElement] || !elements[selectedElement].style) {
+      return;
     }
+
+    let _elements = JSON.parse(JSON.stringify(elements));
+
+    for (let key of keys) {
+      if (key in _elements[selectedElement].style) {
+        delete _elements[selectedElement].style[key];
+      }
+    }
+
+    setElements(_elements);
+
   }
 
-  setElements(_elements);
-}
 
-  
 
   const values = {
     elements,
@@ -106,7 +107,7 @@ function deleteStyle(keys) {
     setSheetStyle,
     mouseCords,
     SetMouseCords,
-    selectedElement, 
+    selectedElement,
     setSelectedElement,
     addStyle,
     addStyles,
