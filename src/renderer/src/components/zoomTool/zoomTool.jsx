@@ -1,6 +1,6 @@
 import { Slider } from 'primereact/slider';
 import { useContext, useEffect, useState } from 'react';
-import { MainContext } from '../../../contexts/mainContext';
+import { MainContext } from '../../contexts/mainContext';
 import "./zoom.css"
 
 export default function ZoomTool(){

@@ -19,7 +19,6 @@ export default function BoxBorderSelector() {
   const [globalBoder, setGlobalBorder] = useState(true);
 
   //individual border styles
-
   const [BorderTopColor, setBorderTopColor] = useState('rgba(0,0,0,1');
   const [BorderRightColor, setBorderRightColor] = useState('rgba(0,0,0,1');
   const [BorderLeftColor, setBorderLeftColor] = useState('rgba(0,0,0,1');

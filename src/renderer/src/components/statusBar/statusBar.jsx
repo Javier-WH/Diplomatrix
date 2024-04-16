@@ -1,4 +1,4 @@
-import ZoomTool from "../dialog/zoomTool/zoomTool";
+import ZoomTool from '../zoomTool/zoomTool.jsx';
 import "./statusBar.css"
 
 export default function StatusBar(){
