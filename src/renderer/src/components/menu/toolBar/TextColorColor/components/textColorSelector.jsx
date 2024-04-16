@@ -46,6 +46,7 @@ export default function TextColorSelector() {
         <Button icon="pi pi-refresh" rounded text aria-label="Filter" onClick={handleReset}/>
     </div>
     <div>
+
       <ColorPicker value={textColor} onChange={setTextColor} hidePresets={true} hideColorTypeBtns={true} locales={customLocales} />
     </div>
 

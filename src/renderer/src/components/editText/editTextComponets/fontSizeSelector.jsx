@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { MainContext } from "../../../../contexts/mainContext";
-import getSVGIcon from "../../../../icons/iconList";
+import { MainContext } from "../../../contexts/mainContext";
+import getSVGIcon from "../../../icons/iconList";
 import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
 import './editTextStyles.css'

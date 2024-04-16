@@ -34,3 +34,24 @@
   align-items: center;
   justify-content: space-between;
 }
+#text-format-main-container{
+  width: 300px;
+}
+
+.text-format-icon-container > svg{
+  fill: var(--primary-color) !important;
+  width: 25px;
+  height: auto;
+
+}
+.text-format-item-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-format-item-container > label{
+  display: flex;
+
+  gap: 10px;
+
+}

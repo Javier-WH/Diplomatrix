@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Dropdown } from 'primereact/dropdown';
 const { ipcRenderer } = window.require('electron');
-import { MainContext } from "../../../../contexts/mainContext";
+import { MainContext } from "../../../contexts/mainContext";
 
 export default function FontSelector() {
 

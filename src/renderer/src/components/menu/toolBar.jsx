@@ -2,12 +2,10 @@ import "./toolBar.css"
 import FileMenu from "./toolBar/fileMenu"
 import InsertTextButton from "./toolBar/insertText"
 import InsertImageButton from "./toolBar/insertImage"
-import FontSizeSelector from "../dialog/editText/editTextComponets/fontSizeSelector"
-import FontStyleSelector from "../dialog/editText/editTextComponets/fontStyleSelector"
-//import FormatBorder from "../dialog/editImage/BoxBorder/formatBorder"
-import FontSelector from "../dialog/editText/editTextComponets/fontSelector"
-import TextFormat from "../dialog/editText/textFormat/textFormat"
-import FontAligmentSelector from "../dialog/editText/editTextComponets/fontAligtmentSelector"
+import FontSizeSelector from "../editText/editTextComponets/fontSizeSelector"
+import FontStyleSelector from "../editText/editTextComponets/fontStyleSelector"
+import FontSelector from "../editText/editTextComponets/fontSelector"
+import FontAligmentSelector from "../editText/editTextComponets/fontAligtmentSelector"
 import BackGroundColorOverlay from "./toolBar/backgroundColor/backgroudColorSelector"
 import TextColorOverlay from "./toolBar/TextColorColor/textColorSelector"
 import TextBorderOverlay from "./toolBar/textBorder/textBorderOverlay"
@@ -26,7 +24,7 @@ export default function ToolBar(){
 
       <div className="toolbar-tools-seccion">
         <InsertTextButton />
-        <TextFormat/>
+     
         <FontStyleSelector />
         <FontAligmentSelector/>
         <FontSelector />
