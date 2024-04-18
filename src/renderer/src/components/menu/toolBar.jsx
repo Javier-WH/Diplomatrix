@@ -12,7 +12,7 @@ import TextBorderOverlay from "./toolBar/textBorder/textBorderOverlay"
 import TextShadowOverlay from "./toolBar/textShadow/textShadowSelector"
 import BoxBorderOverlay from "./toolBar/boxBorder/boxBorderSelector"
 import CreateImageButton from "./toolBar/createImageButton"
-
+import EditPosition from "./toolBar/editPosotion/editPosition"
 
 export default function ToolBar(){
 
@@ -40,6 +40,7 @@ export default function ToolBar(){
           <TextBorderOverlay />
           <TextShadowOverlay />
           <BoxBorderOverlay />
+          <EditPosition/>
         </div>
         <CreateImageButton />
       </div>

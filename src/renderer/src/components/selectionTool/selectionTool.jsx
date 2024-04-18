@@ -23,7 +23,7 @@ export default function SelectionTool(){
     const { height, width, left, top, position } = styleProps;
     const style = { height, width, left, top, position}
     setBoxStyle(style)
-  },[selectedElement])
+  }, [selectedElement, elements])
 
   // manejo del click, para cambiar tamaño y para mover
   //establece la posicion y tamaño inicial del la herramienta
