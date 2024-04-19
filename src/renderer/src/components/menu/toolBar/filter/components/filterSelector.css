@@ -1,0 +1,15 @@
+.filter-values-container{
+  width: 300px;
+}
+
+.filter-values-color-picker{
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
+}
+
+.filter-values-color-picker-container{
+  border-top: 1px solid var(--surface-200);
+  margin-top: 20px;
+  padding-top: 20px;
+}
