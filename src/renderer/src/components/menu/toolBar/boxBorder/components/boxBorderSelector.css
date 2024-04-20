@@ -63,3 +63,32 @@
 
 }
 
+.hideBorder{
+  display: none;
+}
+.border-style-container{
+  position: absolute;
+  background-color: var(--surface-e);
+  width: 250px; 
+  height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+  border: 1px solid var(--surface-200); 
+  padding: 10px;
+  z-index: 999999999999;
+  right: -255px;
+  top: -70px;
+}
+
+
+#border-style-main-button{
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 4fr 5fr 1fr;
+  justify-content: center;
+  align-items: center;
+}

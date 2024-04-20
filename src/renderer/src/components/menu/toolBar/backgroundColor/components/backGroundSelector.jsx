@@ -52,3 +52,4 @@ export default function BackgroundSelector() {
   </div>
 }
 
+//width={120} height={100} hideInputs={true} hideColorTypeBtns={true} hideAdvancedSliders={true} hideColorGuide= {true}

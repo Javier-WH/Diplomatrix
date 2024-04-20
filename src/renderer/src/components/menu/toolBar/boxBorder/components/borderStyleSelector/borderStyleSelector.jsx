@@ -1,19 +1,15 @@
-import { useRef } from "react"
-import { OverlayPanel } from 'primereact/overlaypanel';
+import { useEffect, useState } from "react"
+//import { OverlayPanel } from 'primereact/overlaypanel';
 import { Button } from 'primereact/button';
 import getSVGIcon from "../../../../../../icons/iconList";
 import PropTypes from "prop-types"
 
 
-/**
- * Component for selecting border style.
- * 
- * @component
- * @param {string} BorderType - Current border style.
- * @param {function} setBorderType - Function to set border style.
- * @return {JSX.Element} Component for selecting border style.
- */
+
 export default function BorderStyleSelector({ BorderType, setBorderType }) {
+
+  const [show, setShow] = useState(false)
+
   // List of available border styles
   const borderList = [
     "none", 
@@ -27,14 +23,9 @@ export default function BorderStyleSelector({ BorderType, setBorderType }) {
     "inset", 
     "outset"
   ];
-  // Reference to overlay panel
-  const overlayRef = useRef(null);
 
-  /**
-   * Handle border style selection.
-   * 
-   * @param {string} value - Selected border style.
-   */
+
+
   const handleBorderStyle = (value) => {
     // Check if value is valid
     if (value === null || value === undefined) {
@@ -45,29 +36,43 @@ export default function BorderStyleSelector({ BorderType, setBorderType }) {
     // Set selected border style
     setBorderType(value);
 
-    // Check if overlay panel is valid
-    if (overlayRef.current === null) {
-      console.error('Overlay ref is null');
-      return;
+    setShow(false)
+  };
+  //p-button-label
+  useEffect(()=>{
+    const closeOnClick = e =>{
+      const butttonId = e.target.id
+
+      if (butttonId !== "border-style-main-button"){
+        setShow(false)
+      }
+      
     }
 
-    // Hide overlay panel
-    overlayRef.current.hide();
-  };
+    if (show) {
+      window.addEventListener("click", closeOnClick);
+
+      return () => {
+        window.removeEventListener("click", closeOnClick);
+      };
+    }
+
+  },[show])
+
+  const buttonBorderStyle = {
+    borderBottom: `5px ${BorderType} white`,
+  }
 
   return (
-    <>
-      {/* Button for selecting border style */}
-      <Button 
-        type="button" 
-        icon={getSVGIcon("borderStyle")} 
-        label={BorderType}
-        style={{width: "100%"}}
-        onClick={(e) => overlayRef.current.toggle(e)} 
-
-      />
-      {/* Overlay panel with border style options */}
-      <OverlayPanel ref={overlayRef}>
+    <div style={{position: "relative"}}>
+      <button 
+        id="border-style-main-button"
+        style={{width: "100%", height:"50px"}}
+        onClick={() => setShow(!show)} 
+      >{BorderType} <div style={buttonBorderStyle}></div> </button>
+    
+    
+      <div className= { !show ? "hideBorder" : "border-style-container"}>
         {
           // Map over border list and create border style options
           borderList.map((border) => (
@@ -92,8 +97,8 @@ export default function BorderStyleSelector({ BorderType, setBorderType }) {
             </div>
           ))
         }
-      </OverlayPanel>
-    </> 
+      </div>
+    </div> 
   );
 }
 
@@ -101,3 +106,4 @@ BorderStyleSelector.propTypes = {
   BorderType: PropTypes.string,
   setBorderType: PropTypes.func
 };
+

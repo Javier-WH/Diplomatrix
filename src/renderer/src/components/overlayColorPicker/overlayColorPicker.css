@@ -1,0 +1,20 @@
+#color-picker-overlay-container{
+  position: relative;
+}
+
+#color-picker-overlay-picker{
+  position: absolute;
+  z-index: 99999999999;
+  background-color:var(--surface-f);
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 5px;
+}
+
+.hideColorPicker{
+  display: none !important;
+}
