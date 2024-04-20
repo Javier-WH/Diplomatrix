@@ -48,10 +48,6 @@ export default function OverlayColorPicker({ color, setColor, width = "30px", he
     </div>
 
   </div>
-
- 
-
-
 }
 
 OverlayColorPicker.propTypes = {

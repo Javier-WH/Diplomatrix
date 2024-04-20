@@ -20,7 +20,7 @@ export default function FilterSelector() {
   const [horizontalOffset, setHorizontalOffset] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.horizontalOffset ?? 0)
   const [verticalOffset, setVerticalOffset] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.verticalOffset ?? 0)
   const [blurRadius, setBlurRadius] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.blurRadius ?? 0)
-  const [borderColor, setBorderColor] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.color ?? "rgba(0, 0, 0, 0)");
+  const [borderColor, setBorderColor] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.color ?? "rgba(0, 0, 0, 255)");
 
 
   useEffect(() => {
@@ -59,9 +59,10 @@ export default function FilterSelector() {
     <RangeValue value={sepia} setValue={setSepia} title="Sepia" max={100} />
     <div className="filter-values-color-picker-container">
       <div className="filter-values-color-picker">
-        <span>Color de Borde</span>
+        <span>Sombra Genrál</span>
         <OverlayColorPicker color={borderColor} setColor={setBorderColor} />
       </div>
+      <br />
       <RangeValue value={horizontalOffset} setValue={setHorizontalOffset} title="horizontalOffset" min={-100} max={100} />
       <RangeValue value={verticalOffset} setValue={setVerticalOffset} title="verticalOffset" min={-100} max={100} />
       <RangeValue value={blurRadius} setValue={setBlurRadius} title="blurRadius" max={100} />
@@ -90,15 +91,22 @@ function getCssFilters(filtersString) {
   const contrastValue = contrastMatch ? contrastMatch[1] : null;
 
 
-  
-  const dropShadowRegex = /drop-shadow\((-?\d+(\.\d+)?)px (-?\d+(\.\d+)?)px (-?\d+(\.\d+)?)px (rgba\((-?\d+), (-?\d+), (-?\d+), (0\.\d+)\))\)/;
-  const dropShadowMatch = filtersString.match(dropShadowRegex);
-  const dropShadowValue = dropShadowMatch ? {
-    horizontalOffset: Number(dropShadowMatch[1]),
-    verticalOffset: Number(dropShadowMatch[3]),
-    blurRadius: Number(dropShadowMatch[5]),
-    color: dropShadowMatch[7]
-  } : null;
+
+  const dropShadowStep1Regex = /drop-shadow\((.*?)\)/;
+  const dropShadowStep1Match = filtersString.match(dropShadowStep1Regex);
+  const dropShadowContent = dropShadowStep1Match ? dropShadowStep1Match[1] + ")" : null;
+  const halfContent = dropShadowContent.split("rgb")
+  const color = "rgb" + halfContent[1]
+  const posValues = halfContent[0].split("px ")
+  const horizontalOffset = posValues[0]
+  const verticalOffset = posValues[1]
+  const blurRadius = posValues[2]
+  const dropShadowValue ={
+    horizontalOffset,
+    verticalOffset,
+    blurRadius,
+    color
+  }
 
 
   const grayscaleRegex = /grayscale\((-?\d+(\.\d+)?)%\)/;
