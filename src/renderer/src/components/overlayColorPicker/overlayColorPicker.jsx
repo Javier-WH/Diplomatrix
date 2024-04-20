@@ -44,7 +44,7 @@ export default function OverlayColorPicker({ color, setColor, width = "30px", he
 
 
     <div id='color-picker-overlay-picker' className={!show ? "hideColorPicker" : "color-picker-overlay-picker"}>
-        <ColorPicker value={color} onChange={setColor} hidePresets={true} width={120} height={100} hideInputs={true} hideColorTypeBtns={true} hideAdvancedSliders={true} hideColorGuide={true} />
+        <ColorPicker value={color} onChange={setColor} hidePresets={true} width={190} height={150} hideInputs={false} hideColorTypeBtns={true} hideAdvancedSliders={true} hideColorGuide={true} />
     </div>
 
   </div>

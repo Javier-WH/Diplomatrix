@@ -17,10 +17,11 @@ export default function FilterSelector() {
   const [saturate, setSaturate] = useState(getCssFilters(getStyle('filter'))?.saturateValue ?? 100);
   const [sepia, setSepia] = useState(getCssFilters(getStyle('filter'))?.sepiaValue ?? 0);
 
-  const [borderColor, setBorderColor] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.color ?? "rgba(0, 0, 0, 0)");
   const [horizontalOffset, setHorizontalOffset] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.horizontalOffset ?? 0)
   const [verticalOffset, setVerticalOffset] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.verticalOffset ?? 0)
   const [blurRadius, setBlurRadius] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.blurRadius ?? 0)
+  const [borderColor, setBorderColor] = useState(getCssFilters(getStyle('filter'))?.dropShadowValue?.color ?? "rgba(0, 0, 0, 0)");
+
 
   useEffect(() => {
 
@@ -88,17 +89,8 @@ function getCssFilters(filtersString) {
   const contrastMatch = filtersString.match(contrastRegex);
   const contrastValue = contrastMatch ? contrastMatch[1] : null;
 
-  /*
-  const dropShadowRegex = /drop-shadow\((-?\d+(\.\d+)?)px (-?\d+(\.\d+)?)px (-?\d+(\.\d+)?)px rgba\((-?\d+), (-?\d+), (-?\d+), (0\.\d+)\)\)/;
-  const dropShadowMatch = filtersString.match(dropShadowRegex);
-  const dropShadowValue = dropShadowMatch ? {
-    horizontalOffset: Number(dropShadowMatch[1]),
-    verticalOffset: Number(dropShadowMatch[3]),
-    blurRadius: Number(dropShadowMatch[5]),
-    color: `rgba(${dropShadowMatch[6]}, ${dropShadowMatch[7]}, ${dropShadowMatch[8]}, ${dropShadowMatch[9]})`
-  } : null;
-  */
 
+  
   const dropShadowRegex = /drop-shadow\((-?\d+(\.\d+)?)px (-?\d+(\.\d+)?)px (-?\d+(\.\d+)?)px (rgba\((-?\d+), (-?\d+), (-?\d+), (0\.\d+)\))\)/;
   const dropShadowMatch = filtersString.match(dropShadowRegex);
   const dropShadowValue = dropShadowMatch ? {
