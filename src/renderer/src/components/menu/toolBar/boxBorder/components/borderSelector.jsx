@@ -195,8 +195,9 @@ export default function BoxBorderSelector() {
         </div>
         : <div>
           <div className="border-item-container">
-            <span>Borde Superior</span>
-            <div>
+        
+            <div className="border-item-container-div">
+              {getSVGIcon("borderTop")}
               <OverlayColorPicker color={BorderTopColor} setColor={setBorderTopColor} width="50px" height="50px" />
               <BorderStyleSelector BorderType={BorderTopType} setBorderType={setBorderTopType} />
             </div>
@@ -204,8 +205,10 @@ export default function BoxBorderSelector() {
           </div>
           
           <div className="border-item-container">
-            <span>Borde Izquierdo</span>
-            <div>
+
+            <div className="border-item-container-div">
+              {getSVGIcon("borderLeft")}
+              
               <OverlayColorPicker color={BorderLeftColor} setColor={setBorderLeftColor} width="50px" height="50px" />
               <BorderStyleSelector BorderType={BorderLeftType} setBorderType={setBorderLeftType} />
             </div>
@@ -213,8 +216,9 @@ export default function BoxBorderSelector() {
           </div>
 
           <div className="border-item-container">
-            <span>Borde Derecho</span>
-            <div>
+
+            <div className="border-item-container-div">
+              {getSVGIcon("borderRight")}
               <OverlayColorPicker color={BorderRightColor} setColor={setBorderRightColor} width="50px" height="50px"/>
               <BorderStyleSelector BorderType={BorderRightType} setBorderType={setBorderRightType} />
             </div>
@@ -222,8 +226,9 @@ export default function BoxBorderSelector() {
           </div>
 
           <div className="border-item-container"> 
-            <span>Borde Inferior</span>
-            <div>
+
+            <div className="border-item-container-div">
+              {getSVGIcon("borderBottom")}
               <OverlayColorPicker color={BorderBottonColor} setColor={setBorderBottonColor} width="50px" height="50px" />
               <BorderStyleSelector BorderType={BorderBottonType} setBorderType={setBorderBottonType} />
             </div>

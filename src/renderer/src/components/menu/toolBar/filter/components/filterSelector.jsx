@@ -24,7 +24,7 @@ export default function FilterSelector() {
 
 
   useEffect(() => {
-
+    console.log(opacity)
     addStyle({
       key: "filter",
       value: `blur(${blur}px) 
@@ -52,7 +52,7 @@ export default function FilterSelector() {
     <RangeValue value={contrast} setValue={setContrast} title="Contrast" max={100} />
     <RangeValue value={brightness} setValue={setBrightness} title="Brightness" max={300} />
     <RangeValue value={grayscale} setValue={setGrayscale} title="Grayscale" max={100} />
-    <RangeValue value={hueRotate} setValue={setHueRotate} title="HueRotate" max={1000} />
+    <RangeValue value={hueRotate} setValue={setHueRotate} title="HueRotate" max={360} />
     <RangeValue value={invert} setValue={setInvert} title="Invert" max={100} />
     <RangeValue value={opacity} setValue={setOpacity} title="Opacity" max={100} />
     <RangeValue value={saturate} setValue={setSaturate} title="Saturate" max={1000} />
@@ -72,8 +72,6 @@ export default function FilterSelector() {
 
 }
 
-
-//.element {filter: blur(2px) brightness(80%) contrast(1.5) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)) grayscale(50%) hue-rotate(180deg) invert(70%) opacity(80%) saturate(1.5) sepia(80%);}
 
 function getCssFilters(filtersString) {
   if (!filtersString) return;
@@ -123,7 +121,7 @@ function getCssFilters(filtersString) {
 
   const opacityRegex = /opacity\((-?\d+(\.\d+)?)\)/;
   const opacityMatch = filtersString.match(opacityRegex);
-  const opacityValue = opacityMatch ? opacityMatch[1] * 10000 : null;
+  const opacityValue = opacityMatch ? opacityMatch[1] * 100  : null;
 
   const saturateRegex = /saturate\((-?\d+(\.\d+)?)\)/;
   const saturateMatch = filtersString.match(saturateRegex);

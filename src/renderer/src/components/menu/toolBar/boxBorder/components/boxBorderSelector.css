@@ -59,11 +59,23 @@
   border-bottom: 1px solid var(--surface-200);
 }
 
-.border-item-container > div{
+.border-item-container-div{
   display: grid;
-  grid-template-columns: 1.5fr 3fr;
+  grid-template-columns: 40px auto 150px ;
   align-items: center;
   gap: 10px;
+  
+}
+.border-item-container-div > *{
+  display: flex;
+  justify-content: center;
+}
+
+
+.border-item-container-div svg{
+ fill: var(--primary-color);
+ width: 40px;
+ height: auto;
   
 }
 
