@@ -197,8 +197,8 @@ export default function BoxBorderSelector() {
           <div className="border-item-container">
             <span>Borde Superior</span>
             <div>
+              <OverlayColorPicker color={BorderTopColor} setColor={setBorderTopColor} width="50px" height="50px" />
               <BorderStyleSelector BorderType={BorderTopType} setBorderType={setBorderTopType} />
-              <OverlayColorPicker color={BorderTopColor} setColor={setBorderTopColor} />
             </div>
             <RangeValue value={BrderTopWidth} setValue={setBorderTopWidth} title="Grosor" />
           </div>
@@ -206,8 +206,8 @@ export default function BoxBorderSelector() {
           <div className="border-item-container">
             <span>Borde Izquierdo</span>
             <div>
+              <OverlayColorPicker color={BorderLeftColor} setColor={setBorderLeftColor} width="50px" height="50px" />
               <BorderStyleSelector BorderType={BorderLeftType} setBorderType={setBorderLeftType} />
-              <OverlayColorPicker color={BorderLeftColor} setColor={setBorderLeftColor} />
             </div>
             <RangeValue value={BrderLeftWidth} setValue={setBorderLeftWidth} title="Grosor" />
           </div>
@@ -215,8 +215,8 @@ export default function BoxBorderSelector() {
           <div className="border-item-container">
             <span>Borde Derecho</span>
             <div>
+              <OverlayColorPicker color={BorderRightColor} setColor={setBorderRightColor} width="50px" height="50px"/>
               <BorderStyleSelector BorderType={BorderRightType} setBorderType={setBorderRightType} />
-              <OverlayColorPicker color={BorderRightColor} setColor={setBorderRightColor} />
             </div>
             <RangeValue value={BrderRightWidth} setValue={setBorderRightWidth} title="Grosor" />
           </div>
@@ -224,8 +224,8 @@ export default function BoxBorderSelector() {
           <div className="border-item-container"> 
             <span>Borde Inferior</span>
             <div>
+              <OverlayColorPicker color={BorderBottonColor} setColor={setBorderBottonColor} width="50px" height="50px" />
               <BorderStyleSelector BorderType={BorderBottonType} setBorderType={setBorderBottonType} />
-              <OverlayColorPicker color={BorderBottonColor} setColor={setBorderBottonColor} />
             </div>
             <RangeValue value={BrderBottonWidth} setValue={setBorderBottonWidth} title="Grosor" />
           </div>

@@ -54,13 +54,17 @@
   flex-direction: column;
   gap: 5px;
   width: 100%;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--surface-200);
 }
 
 .border-item-container > div{
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr;
   align-items: center;
-
+  gap: 10px;
+  
 }
 
 .hideBorder{
