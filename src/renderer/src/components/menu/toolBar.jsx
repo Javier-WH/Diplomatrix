@@ -14,6 +14,7 @@ import BoxBorderOverlay from "./toolBar/boxBorder/boxBorderSelector"
 import CreateImageButton from "./toolBar/createImageButton"
 import EditPosition from "./toolBar/editPosotion/editPosition"
 import Filter from "./toolBar/filter/filter"
+import RoundedCornerOverlay from "./toolBar/roundedCorner/roundedCorner"
 
 export default function ToolBar(){
 
@@ -43,6 +44,7 @@ export default function ToolBar(){
           <BoxBorderOverlay />
           <EditPosition/>
           <Filter/>
+          <RoundedCornerOverlay/>
         </div>
         <CreateImageButton />
       </div>
