@@ -15,6 +15,9 @@ import CreateImageButton from "./toolBar/createImageButton"
 import EditPosition from "./toolBar/editPosotion/editPosition"
 import Filter from "./toolBar/filter/filter"
 import RoundedCornerOverlay from "./toolBar/roundedCorner/roundedCorner"
+import ClipPathOverlay from "./toolBar/clipPath/clipPathOverlay"
+import UploadImage from "./toolBar/uploadImage/upLoadImage"
+
 
 export default function ToolBar(){
 
@@ -45,6 +48,8 @@ export default function ToolBar(){
           <EditPosition/>
           <Filter/>
           <RoundedCornerOverlay/>
+          <ClipPathOverlay/>
+          <UploadImage/>
         </div>
         <CreateImageButton />
       </div>

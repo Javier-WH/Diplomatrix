@@ -1,0 +1,16 @@
+#clipPath-main-container{
+  width: 330px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+#clipPath-title-container{
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  margin-bottom: 10px;
+   
+}

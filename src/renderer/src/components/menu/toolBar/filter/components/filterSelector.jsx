@@ -24,7 +24,7 @@ export default function FilterSelector() {
 
 
   useEffect(() => {
-    console.log(opacity)
+    
     addStyle({
       key: "filter",
       value: `blur(${blur}px) 
