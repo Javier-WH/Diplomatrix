@@ -17,6 +17,8 @@ import Filter from "./toolBar/filter/filter"
 import RoundedCornerOverlay from "./toolBar/roundedCorner/roundedCorner"
 import ClipPathOverlay from "./toolBar/clipPath/clipPathOverlay"
 import UploadImage from "./toolBar/uploadImage/upLoadImage"
+import SaveButton from "./toolBar/save/save"
+import LoadFile from "./toolBar/load/load"
 
 
 export default function ToolBar(){
@@ -52,6 +54,8 @@ export default function ToolBar(){
           <UploadImage/>
         </div>
         <CreateImageButton />
+        <SaveButton/>
+        <LoadFile/>
       </div>
 
     
