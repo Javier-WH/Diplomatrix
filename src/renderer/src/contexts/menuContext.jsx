@@ -9,14 +9,14 @@ export const MenuContext = createContext();
 export function MenuContextProvider(props) {
 
   const [showInsertImage, setShowInsertImage] = useState(false);
-  const [showEditText, setShowEditText] = useState(false);
+  const [showConfigSheet, setShowConfigSheet] = useState(false);
 
 
   const values = {
     showInsertImage,
     setShowInsertImage,
-    showEditText,
-    setShowEditText
+    showConfigSheet,
+    setShowConfigSheet
   }
 
   return (

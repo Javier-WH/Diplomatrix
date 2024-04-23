@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 export default function LoadFile() {
 
-  const { setElements } = useContext(MainContext);
+  const { setElements, setSheetStyle } = useContext(MainContext);
 
 
   const handleFileLoad = (event) => {
@@ -13,7 +13,8 @@ export default function LoadFile() {
     const reader = new FileReader();
     reader.onload = () => {
       const json = JSON.parse(reader.result);
-      setElements(json);
+      setSheetStyle(json.sheetStyle)
+      setElements(json.elements);
       event.target.value = "";
     };
 

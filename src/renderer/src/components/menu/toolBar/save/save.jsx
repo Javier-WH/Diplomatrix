@@ -5,10 +5,10 @@ import { useContext } from 'react';
 
 export default function SaveButton() {
 
-  const { elements } = useContext(MainContext)
+  const { elements, sheetStyle } = useContext(MainContext)
 
   const handleSave = () => {
-    const jsonData = JSON.stringify(elements);
+    const jsonData = JSON.stringify({elements, sheetStyle});
     const fileName = 'saveFile.json';
     
     const blob = new Blob([jsonData], { type: 'application/json' });
