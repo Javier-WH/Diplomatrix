@@ -1,3 +1,24 @@
 #sheet-config-dialog-container{
   width: 50%;
 }
+
+.p-dropdown-items-wrapper{
+  z-index: 999999999999999999999999 !important;
+}
+
+#config-sheet-main-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+ 
+}
+
+#config-sheet-main-container-sub{
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+ 
+}

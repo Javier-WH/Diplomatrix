@@ -1,0 +1,13 @@
+#sheet-backgrond-color-selector-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 300px;
+}
+
+#sheet-backgrond-color-selector-container > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
