@@ -2,11 +2,8 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/logo.jpg?asset'
-import fs from 'fs'
-
-const assetPath = join(__dirname, '../../resources/assets') 
-
-import fontList from 'font-list'
+import loadFonts from './functions/loadFonts/loadFonts'
+import LoadImage from './functions/loadImage/loadImage'
 
 function createWindow() {
   // Create the browser window.
@@ -37,47 +34,12 @@ function createWindow() {
     return { action: 'deny' }
   })
 
-  // Función para cargar una imagen desde una ruta de archivo
-function cargarImagen(ruta) {
-  try {
-    // Lee la imagen desde el archivo
-    const imagenBuffer = fs.readFileSync(ruta);
 
-    // Convierte la imagen en Base64
-    const imagenBase64 = Buffer.from(imagenBuffer).toString('base64');
+  //funcion para cargar una imagen desde una ruta de archivo
+  ipcMain.on('getAssetsList', () => LoadImage(mainWindow))
 
-    // Crea una URL de datos para la imagen
-    const imagenURL = `data:image/svg+xml;base64,${imagenBase64}`;
-
-    return imagenURL;
-  } catch (error) {
-    console.error('Error al cargar la imagen:', error);
-    return null;
-  }
-}
-  // Escucha el evento 'getFilesList' enviado desde el proceso de renderizado
-  ipcMain.on('getAssetsList', () => {
-    fs.readdir(assetPath, (err, fileList) => {
-      if (err) {
-        mainWindow.webContents.send('assetList', []); // Envía una lista vacía en caso de error
-      } else {
-        const list = fileList.map(name =>{
-          return {
-            name,
-            img: cargarImagen(assetPath + `/${name}`)
-          }
-        }) 
-        mainWindow.webContents.send('assetList', list); // Envía la lista de archivos al proceso de renderizado
-      }
-    });
-  });
-
-  ipcMain.on('getFontList', async ()=>{
-    const list = await fontList.getFonts();
-    mainWindow.webContents.send('fontsList', list);
-  })
-
-
+  //funcion para cargar las fuentes
+  ipcMain.on('getFontList', () => loadFonts(mainWindow))
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.

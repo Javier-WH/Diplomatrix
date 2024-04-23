@@ -1,8 +1,9 @@
 
 import { useState, useEffect, useContext } from "react";
-import { Dropdown } from 'primereact/dropdown';
 const { ipcRenderer } = window.require('electron');
 import { MainContext } from "../../../contexts/mainContext";
+import NativeFontList from "./nativeFontList";
+import "./nativeFontlist.css"
 
 export default function FontSelector() {
 
@@ -14,7 +15,7 @@ export default function FontSelector() {
 
 
   useEffect(() => {
-    if(selectedElement === null || disabled){
+    if (selectedElement === null || disabled) {
       return
     }
     if (elements[selectedElement]?.header?.type !== 'txt') {
@@ -23,21 +24,21 @@ export default function FontSelector() {
     addStyle({ key: "fontFamily", value: selectedFont?.name })
   }, [selectedFont])
 
-  useEffect(() => { 
-    if(selectedElement === null){
+  useEffect(() => {
+    if (selectedElement === null) {
       setSelectedFont(null)
       setDisabled(true)
       return
     }
-    if (elements[selectedElement]?.header?.type === 'txt'){
+    if (elements[selectedElement]?.header?.type === 'txt') {
       const fontName = elements[selectedElement]?.style.fontFamily
-   
-        setSelectedFont({
-          name: fontName,
-          code: fontName
-        })
+
+      setSelectedFont({
+        name: fontName,
+        code: fontName
+      })
       setDisabled(false)
-    }else{
+    } else {
       setSelectedFont(null)
       setDisabled(true)
     }
@@ -48,14 +49,26 @@ export default function FontSelector() {
 
 
   useEffect(() => {
+
+
+  }, []);
+
+
+  useEffect(() => {
     ipcRenderer.send('getFontList');
   }, []);
 
   useEffect(() => {
     const handleFontList = (event, fonts) => {
-      
-      const list = fonts.map(font => {return { name: font, code: font }})
-      setFontList(list)
+
+      const list = fonts.map(font => { return { name: font, code: font } })
+      console.log(list)
+      const nativeList = NativeFontList();
+      const fullList = [
+        ...nativeList,
+        ...(list ?? null),
+      ]
+      setFontList(fullList)
     };
 
     ipcRenderer.on('fontsList', handleFontList);
@@ -66,9 +79,27 @@ export default function FontSelector() {
   }, []);
 
   return (
-    <div className="card flex justify-content-start" >
-      <Dropdown value={selectedFont} onChange={(e) => { setSelectedFont(e.value)} } options={fontList} optionLabel="name"
-        placeholder="Selecciona una fuete" className="w-full md:w-14rem" style={{ width: '100%', maxWidth: "350px", minWidth: "350px" }} disabled={disabled}/>
+    <div >
+      <select
+        value={selectedFont?.name ?? ''}
+        onChange={(e) => setSelectedFont(fontList.find(font => font.name === e.target.value))}
+        style={{ width: '300px', height: "45px", fontSize: '1rem' }}
+        disabled={disabled}
+      >
+        {fontList.map(font =>
+          <option
+            key={font.name}
+            value={font.name}
+            style={{ fontFamily: font.name, maxWidth: "300px", fontSize: '1rem', overflow: "hidden" }}
+
+          >
+
+            {font.name !== '"Angel wish"' && font.name !== "Amer" && font.name !== "AmericanTypewriter" ? font.name : null}
+
+
+          </option>)
+        }
+      </select>
     </div>
   )
 }
