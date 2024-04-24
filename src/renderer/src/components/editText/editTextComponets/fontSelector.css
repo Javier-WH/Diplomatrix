@@ -1,0 +1,35 @@
+#font-list-main-container{
+  position: relative;
+}
+
+#font-list-container{
+  position: absolute;
+  background: white;
+  border: 1px solid gray;
+  height: 80vh;
+  width: 300px;
+  overflow-y: auto;
+  z-index: 999999999999999999;
+}
+
+#font-list-button{
+  width: 300px;
+  height: 45px;
+}
+
+.font-list-fontOpion{
+  color: var(--primary-color);
+  cursor: pointer;
+  height: 25px;
+  width: 280px;
+  overflow: hidden;
+}
+
+.font-list-fontOpion:hover{
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.fontHidden{
+  display: none;
+}
