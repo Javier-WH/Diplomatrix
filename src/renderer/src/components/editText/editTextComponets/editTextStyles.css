@@ -17,4 +17,35 @@
 #font-size-button-container{
   display: flex;
   column-gap: 5px;
+  position: relative;
+}
+
+#font-size-list{
+  position: absolute;
+  background-color: white;
+  width: 80px;
+  border: 1px solid gray;
+  height: 80vh;
+  overflow: auto; 
+  right: 5px;
+  top: 45px;
+}
+
+#font-size-list >div{
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+#font-size-list >div:hover{
+  color: white;
+  background: var(--primary-color);
+}
+#font-size-input{
+  width: 80px;
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+.hideSizeList{
+  display: none;
 }
