@@ -12,7 +12,7 @@ export function MainContextProvider(props) {
   const [mouseCords, SetMouseCords] = useState({ x: 20, y: 0 });
   const [newElementData, setNewElemntData] = useState(null);
   const [selectedElement, setSelectedElement] = useState(null);
-  const [refreshScale, setRefreshScale] = useState(false)
+  const [scaleAux, setScaleAux] = useState( sheetStyle?.scale ?? 80);
   const sheetRef = useRef(null);
 
 
@@ -113,13 +113,13 @@ export function MainContextProvider(props) {
     addStyle,
     addStyles,
     getStyle,
-    refreshScale,
-    setRefreshScale,
     sheetRef,
     getHeader,
     addHeader,
     fullEditElemtnt,
-    deleteStyle
+    deleteStyle,
+    scaleAux,
+    setScaleAux
   }
 
   return (

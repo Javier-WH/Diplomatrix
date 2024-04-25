@@ -12,11 +12,9 @@ export default function Format({ format, setFormat }) {
     <div id="format-selector-image-generator-main-container">
       <span>Formato</span>
       <select name="" id="format-selector-image-generator" value={format} onChange={handleFormatChange}>
-        <option value="JPEG">JPEG</option>
-        <option value="PNG">PNG</option>
-        <option value="WEBP">WEBP</option>
-        <option value="AVIF">AVIF</option>
-        <option value="SVG">SVG</option>
+        <option value="toJpeg">JPEG</option>
+        <option value="toPng">PNG</option>
+        <option value="toSvg">SVG</option>
       </select>
     </div>
 

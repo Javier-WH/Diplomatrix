@@ -5,23 +5,16 @@ import "./zoom.css"
 
 export default function ZoomTool(){
 
-  const { sheetStyle, setSheetStyle, refreshScale, setRefreshScale } = useContext(MainContext)
-  const [value, setValue] = useState(100)
+  const { sheetStyle, setSheetStyle, setScaleAux } = useContext(MainContext)
+  const [value, setValue] = useState(sheetStyle?.scale * 100)
 
   useEffect(()=>{
-    setValue(sheetStyle.scale * 100)
-  }, [])
-
-  useEffect(() => {
-    setValue(sheetStyle.scale * 100)
-    setRefreshScale(false)
-  }, [refreshScale])
-
-  useEffect(()=>{
-    
-    let style = JSON.parse(JSON.stringify(sheetStyle));
-    style.scale = `${(value / 100)}`
-    setSheetStyle(style)
+    const scale = `${(value / 100)}`
+    setScaleAux(scale)
+    setSheetStyle({
+      ...sheetStyle,
+      scale
+    })
 
   },[value])
 

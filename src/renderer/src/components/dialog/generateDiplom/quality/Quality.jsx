@@ -11,11 +11,11 @@ export default function Quality({ quality, setQuality }) {
     <div id="quality-selector-image-generator-main-container">
       <span>Calidad</span>
       <select name="" id="quality-selector-image-generator" value={quality} onChange={handleQualityChange}>
-        <option value="1">Baja</option>
-        <option value="5">Media</option>
-        <option value="10">Alta</option>
-        <option value="12">Superior</option>
-        <option value="15">Maxima</option>
+        <option value="0.2">Baja</option>
+        <option value="0.4">Media</option>
+        <option value="0.6">Alta</option>
+        <option value="0.8">Superior</option>
+        <option value="1">Maxima</option>
       </select>
     </div>
   );

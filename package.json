@@ -20,8 +20,8 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "dom-to-image-more": "^3.3.0",
     "font-list": "^1.5.1",
-    "html2canvas": "^1.4.1",
     "jimp": "^0.22.12",
     "primeicons": "^6.0.1",
     "primereact": "^10.5.1",

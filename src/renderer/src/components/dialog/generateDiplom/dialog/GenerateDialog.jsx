@@ -5,38 +5,39 @@ import { useContext, useState } from 'react';
 import Quality from '../quality/Quality';
 import Format from '../format/Format';
 import { Button } from 'primereact/button';
-import html2canvas from "html2canvas";
-//import puppeteer from 'puppeteer-core';
-import "../generate.css"
+import "../generate.css";
+import domtoimage from 'dom-to-image-more';
 
 
 export default function GenerateImgDialog() {
 
-  const { sheetRef } = useContext(MainContext)
+  const { sheetRef, scaleAux, sheetStyle, setSheetStyle } = useContext(MainContext)
   const { showGenerateImg, setShowGenerateImg } = useContext(MenuContext)
   const [quality, setQuality] = useState(1);
-  const [format, setFormat] = useState("JPEG");
-
-  const handleGenerate = async () => {
-    try {
-      const options = {
-        scale: 15,
-        allowTaint: true,
-        logging: false,
-        useCORS: true
-      };
-      const canvas = await html2canvas(sheetRef.current, options);
-      const imgData = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = imgData;
-      link.download = "image.png";
-      link.click();
-    } catch(err) {
-      console.error("Error generating image:", err);
-    }
-  }
+  const [format, setFormat] = useState("toJpeg");
 
 
+  function handleGenerate() {
+    const filter = (node) => node.tagName !== 'i';
+
+    domtoimage
+    [format](sheetRef.current, { quality, filter })
+      .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'Diploma';
+        link.href = dataUrl;
+        link.click();
+      });
+
+    //corrije un bug que causa que la imagen generada no tenga el tama;o correcto
+    setTimeout(() => {
+      setSheetStyle({
+        ...sheetStyle,
+        scale: scaleAux
+      })
+      setShowGenerateImg(false)
+    }, 200);
+  };
 
   return (
     <Dialog header="Generar Imagen"
@@ -50,7 +51,7 @@ export default function GenerateImgDialog() {
       <div id='generate-imaagen-selector-container'>
         <Quality quality={quality} setQuality={setQuality} />
         <Format format={format} setFormat={setFormat} />
-        <Button label="Generar" icon="pi pi-image" onClick={handleGenerate}/>
+        <Button label="Generar" icon="pi pi-image" onClick={handleGenerate} />
       </div>
     </Dialog>
   )

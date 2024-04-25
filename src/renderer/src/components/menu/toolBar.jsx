@@ -22,11 +22,11 @@ import LoadFile from "./toolBar/load/load"
 import ConfigSheet from "../dialog/configSheet/configSheet"
 
 
-export default function ToolBar(){
+export default function ToolBar() {
 
   return <div id="toolbar">
     <div id="toolbar-filemenu-container">
-      <FileMenu/>
+      <FileMenu />
     </div>
     <div id="toolbar-tools-container">
 
@@ -35,20 +35,20 @@ export default function ToolBar(){
         <InsertImageButton />
 
         <div id="font-size-button-container">
-          <BackGroundColorOverlay/>
-          <TextColorOverlay/>
+          <BackGroundColorOverlay />
+          <TextColorOverlay />
           <TextBorderOverlay />
           <TextShadowOverlay />
           <BoxBorderOverlay />
-          <EditPosition/>
-          <Filter/>
-          <RoundedCornerOverlay/>
-          <ClipPathOverlay/>
-          <UploadImage/>
+          <EditPosition />
+          <Filter />
+          <RoundedCornerOverlay />
+          <ClipPathOverlay />
+          <UploadImage />
         </div>
-        <SaveButton/>
-        <LoadFile/>
-        <ConfigSheet/>
+        <SaveButton />
+        <LoadFile />
+        <ConfigSheet />
         <CreateImageButton />
       </div>
 
@@ -59,7 +59,7 @@ export default function ToolBar(){
         <FontSelector />
         <FontSizeSelector />
       </div>
-    
+
     </div>
   </div>
 

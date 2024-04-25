@@ -11,9 +11,6 @@ export default function Sheet() {
   const [ cursorImage, setCursorImage ] = useState({});
 
 
-
-
-
   //esto actualiza el cursor si newElementData es null
   useEffect(()=>{
     if(!newElementData){
