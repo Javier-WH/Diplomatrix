@@ -44,18 +44,21 @@ export default function GenerateImgDialog() {
   }
 
   return (
-    <Dialog header="Generar Imagen"
+    <Dialog header=""
       visible={showGenerateImg}
-      style={{ width: '300px', height: "400px" }}
+      closable={false}
       onHide={closeDialog}
-      maximizable
-      maximized={false}
+      maximized={true}
       baseZIndex="9999999999999999"
     >
       <div id='generate-imaagen-selector-container'>
+        <h2>Generar Imagen</h2>
         <Quality quality={quality} setQuality={setQuality} />
         <Format format={format} setFormat={setFormat} />
-        <Button label="Generar" icon="pi pi-image" onClick={handleGenerate} />
+        <div style={{display: "flex", gap: "20px"}}>
+          <Button label="Cancelar" icon="pi pi-times-circle" severity='danger' onClick={closeDialog} style={{width: "150px"}}/>
+          <Button label="Generar" icon="pi pi-image" onClick={handleGenerate} style={{ width: "150px" }} />
+        </div>
       </div>
     </Dialog>
   )
