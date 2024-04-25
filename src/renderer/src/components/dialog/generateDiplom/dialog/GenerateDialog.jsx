@@ -29,6 +29,10 @@ export default function GenerateImgDialog() {
         link.click();
       });
 
+      closeDialog();
+  };
+
+  const closeDialog = ()=>{
     //corrije un bug que causa que la imagen generada no tenga el tama;o correcto
     setTimeout(() => {
       setSheetStyle({
@@ -37,13 +41,13 @@ export default function GenerateImgDialog() {
       })
       setShowGenerateImg(false)
     }, 200);
-  };
+  }
 
   return (
     <Dialog header="Generar Imagen"
       visible={showGenerateImg}
       style={{ width: '300px', height: "400px" }}
-      onHide={() => setShowGenerateImg(false)}
+      onHide={closeDialog}
       maximizable
       maximized={false}
       baseZIndex="9999999999999999"

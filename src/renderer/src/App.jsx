@@ -37,18 +37,19 @@ function App() {
 
     //estos son los parametros que mejor sirvieron para ajustar el zoom
     setMarginStyle({
+     
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "column",
       overflow: 'hidden',
-      height: isIncreaseHeigthNeeded ? (scale * 1000) + "px" : "100%",
-      width: isIncreaseWidthNeeded ? (scale * 1300) + "px" : "100%",
+      height: isIncreaseHeigthNeeded ? (scale * 100 + sheetHeight) + "px" : "100%",
+      width: isIncreaseWidthNeeded ? (scale * 100 + sheetWidth) + "px" : "100%",
       //paddingLeft: isIncreaseWidthNeeded ? (scale * 80) + "px" : "0",
  
     })
 
-    
+    /*
     //con esto el scroll se queda en el centro cuando se hace zoom
     let scrollPanel = document.getElementById("scroll-container");
     if (isIncreaseHeigthNeeded){
@@ -62,7 +63,7 @@ function App() {
       let clientWidth = scrollPanel.clientWidth;
       let scrollPositionX = scrollWidth / 2 - clientWidth / 2;
       scrollPanel.scrollLeft = scrollPositionX;
-    }
+    }*/
   },[sheetStyle])
 
   return <>
