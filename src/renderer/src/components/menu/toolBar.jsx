@@ -30,14 +30,6 @@ export default function ToolBar(){
     </div>
     <div id="toolbar-tools-container">
 
-      <div className="toolbar-tools-seccion">
-        <InsertTextButton />
-     
-        <FontStyleSelector />
-        <FontAligmentSelector/>
-        <FontSelector />
-        <FontSizeSelector/>
-      </div>
 
       <div className="toolbar-tools-seccion">
         <InsertImageButton />
@@ -54,12 +46,19 @@ export default function ToolBar(){
           <ClipPathOverlay/>
           <UploadImage/>
         </div>
-        <CreateImageButton />
         <SaveButton/>
         <LoadFile/>
         <ConfigSheet/>
+        <CreateImageButton />
       </div>
 
+      <div className="toolbar-tools-seccion">
+        <InsertTextButton />
+        <FontStyleSelector />
+        <FontAligmentSelector />
+        <FontSelector />
+        <FontSizeSelector />
+      </div>
     
     </div>
   </div>

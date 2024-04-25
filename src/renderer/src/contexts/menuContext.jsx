@@ -10,13 +10,16 @@ export function MenuContextProvider(props) {
 
   const [showInsertImage, setShowInsertImage] = useState(false);
   const [showConfigSheet, setShowConfigSheet] = useState(false);
+  const [showGenerateImg, setShowGenerateImg] = useState(false);
 
 
   const values = {
     showInsertImage,
     setShowInsertImage,
     showConfigSheet,
-    setShowConfigSheet
+    setShowConfigSheet,
+    showGenerateImg, 
+    setShowGenerateImg
   }
 
   return (

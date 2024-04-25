@@ -1,0 +1,16 @@
+#quality-selector-image-generator{
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+#quality-selector-image-generator-main-container{
+  position: relative;
+}
+#quality-selector-image-generator-main-container > span{
+  position: absolute;
+  left: 0;
+  top: -30px;
+}

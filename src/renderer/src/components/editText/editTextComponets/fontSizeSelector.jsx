@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../../../contexts/mainContext";
 import getSVGIcon from "../../../icons/iconList";
 import { Button } from 'primereact/button';
-import { InputNumber } from 'primereact/inputnumber';
 import './editTextStyles.css'
 
 
@@ -110,14 +109,3 @@ export default function FontSizeSelector(){
   </div>
 
 }
-
-/*
-    <InputNumber 
-      value={size} 
-      onValueChange={(e) => setSize(e.value)} 
-      min={0} max={200} 
-      inputStyle={{ width: "60px" }} 
-      disabled={disabled} 
-    
-      />
-*/

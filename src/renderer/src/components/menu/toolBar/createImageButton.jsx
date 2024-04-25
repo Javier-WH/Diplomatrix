@@ -1,12 +1,14 @@
 import getSVGIcon from "../../../icons/iconList";
 import { Button } from 'primereact/button';
 import { MainContext } from "../../../contexts/mainContext";
+import { MenuContext } from "../../../contexts/menuContext";
 import { useContext} from "react";
-import html2canvas from "html2canvas";
+//import html2canvas from "html2canvas";
 
 export default function CreateImageButton(){
 
-  const { sheetRef, setSelectedElement, sheetStyle, setSheetStyle, setRefreshScale } = useContext(MainContext)
+  const { sheetRef, setSelectedElement, sheetStyle, setSheetStyle } = useContext(MainContext)
+  const { setShowGenerateImg } = useContext(MenuContext)
 
 
   
@@ -17,6 +19,8 @@ export default function CreateImageButton(){
       ...sheetStyle,
       scale: "1"
     })
+    setShowGenerateImg(true)
+    /*
     setRefreshScale(true)
 
     //el timeout sirve para que se pueda limpiar el selectedElement antes de crear la imagen
@@ -33,11 +37,12 @@ export default function CreateImageButton(){
       })
     }, 50);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer);*/
   }
 
 
 
   return <Button icon={getSVGIcon("addImg")} aria-label="Filter" onClick={handleClick} />
+  //return <Button icon={getSVGIcon("addImg")} aria-label="Filter" onClick={() => setShowGenerateImg(true)} />
 
 }
