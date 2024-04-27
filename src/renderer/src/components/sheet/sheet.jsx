@@ -28,7 +28,7 @@ export default function Sheet() {
           top: "0px",
           left: "0px"
         },
-        image: "none"
+        image: ""
       }
     )
   }

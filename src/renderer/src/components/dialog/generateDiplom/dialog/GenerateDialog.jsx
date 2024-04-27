@@ -17,7 +17,7 @@ export default function GenerateImgDialog() {
   const [format, setFormat] = useState("toJpeg");
 
 
-  function handleGenerate() {
+  /*function handleGenerate() {
     const filter = (node) => node.tagName !== 'i';
 
     domtoimage
@@ -30,9 +30,26 @@ export default function GenerateImgDialog() {
       });
 
       closeDialog();
+  };*/
+
+  function handleGenerate() {
+    const filter = (node) => node.tagName !== 'i';
+    console.log("Ruta de sheetRef:", sheetRef.current);
+    domtoimage.toBlob(sheetRef.current, { quality, filter }).then(function (blob) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = 'Diploma';
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+
+
+    closeDialog();
   };
 
-  const closeDialog = ()=>{
+  const closeDialog = () => {
     //corrije un bug que causa que la imagen generada no tenga el tama;o correcto
     setTimeout(() => {
       setSheetStyle({
@@ -55,8 +72,8 @@ export default function GenerateImgDialog() {
         <h2>Generar Imagen</h2>
         <Quality quality={quality} setQuality={setQuality} />
         <Format format={format} setFormat={setFormat} />
-        <div style={{display: "flex", gap: "20px"}}>
-          <Button label="Cancelar" icon="pi pi-times-circle" severity='danger' onClick={closeDialog} style={{width: "150px"}}/>
+        <div style={{ display: "flex", gap: "20px" }}>
+          <Button label="Cancelar" icon="pi pi-times-circle" severity='danger' onClick={closeDialog} style={{ width: "150px" }} />
           <Button label="Generar" icon="pi pi-image" onClick={handleGenerate} style={{ width: "150px" }} />
         </div>
       </div>

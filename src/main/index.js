@@ -18,11 +18,13 @@ function createWindow() {
       allowFileAccess: true,
       //webSecurity: false,
       nodeIntegration: true,
-       contextIsolation: false,
+      contextIsolation: false,
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
   })
+
+  
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.maximize();
