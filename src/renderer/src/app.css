@@ -14,7 +14,8 @@ body{
 
 #scroll-container{
   height: 87.5%;
-  overflow: auto;
+  overflow: hidden;
+
 }
 
 #app-main-containert{

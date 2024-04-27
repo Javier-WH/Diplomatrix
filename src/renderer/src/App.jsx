@@ -12,7 +12,8 @@ import './app.css'
 function App() {
 
   const { sheetStyle } = useContext(MainContext)
-  const [ marginStyle, setMarginStyle ] = useState()
+  const [ marginStyle, setMarginStyle ] = useState();
+  const [scrollContainerStyle, setScrollContainerStyle] = useState();
 
 
   //este useefect se encarga de graduar cuando se hace zoom
@@ -35,43 +36,43 @@ function App() {
     const isIncreaseWidthNeeded = sheetWidth > screenWidh - 5 
     const isIncreaseHeigthNeeded = sheetHeight > screenHeight - 120
 
-    //estos son los parametros que mejor sirvieron para ajustar el zoom
+  
     setMarginStyle({
-     
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "column",
       overflow: 'hidden',
-      height: isIncreaseHeigthNeeded ? (scale * 100 + sheetHeight) + "px" : "100%",
-      width: isIncreaseWidthNeeded ? (scale * 100 + sheetWidth) + "px" : "100%",
-      //paddingLeft: isIncreaseWidthNeeded ? (scale * 80) + "px" : "0",
- 
+      height: "250vh",
+      width: "200vw",
+    })
+    
+    let scrollPanel = document.getElementById("scroll-container");
+    let scrollHeight = scrollPanel.scrollHeight;
+    let clientHeight = scrollPanel.clientHeight;
+    let scrollPosition = scrollHeight / 2 - clientHeight / 2;
+    if (!isIncreaseHeigthNeeded) scrollPanel.scrollTop =   scrollPosition;
+
+    let scrollWidth = scrollPanel.scrollWidth;
+    let clientWidth = scrollPanel.clientWidth;
+    let scrollPositionX = scrollWidth / 2 - clientWidth / 2;
+    if (!isIncreaseWidthNeeded) scrollPanel.scrollLeft = scrollPositionX;
+
+  
+    setScrollContainerStyle({
+      ...scrollContainerStyle,
+      overflowY: isIncreaseHeigthNeeded ? "auto" : "hidden",
+      overflowX: isIncreaseWidthNeeded ? "auto" : "hidden"
     })
 
-    /*
-    //con esto el scroll se queda en el centro cuando se hace zoom
-    let scrollPanel = document.getElementById("scroll-container");
-    if (isIncreaseHeigthNeeded){
-      let scrollHeight = scrollPanel.scrollHeight;
-      let clientHeight = scrollPanel.clientHeight;
-      let scrollPosition = scrollHeight / 2 - clientHeight / 2;
-      scrollPanel.scrollTop = scrollPosition;
-    }
-    if (isIncreaseWidthNeeded){
-      let scrollWidth = scrollPanel.scrollWidth;
-      let clientWidth = scrollPanel.clientWidth;
-      let scrollPositionX = scrollWidth / 2 - clientWidth / 2;
-      scrollPanel.scrollLeft = scrollPositionX;
-    }*/
-  },[sheetStyle])
+  }, [sheetStyle])
 
   return <>
     <div id='app-main-containert'>
       <div id='toolbar-menu-main-container'>
         <ToolBar/>
       </div>
-      <div id='scroll-container'>
+      <div id='scroll-container' style={scrollContainerStyle}>
         <div id='sheet-container' style={marginStyle}>
           <Sheet />
         </div>

@@ -32,7 +32,6 @@ export default function GenerateImgDialog() {
       closeDialog();
   };
 
- 
 
   const closeDialog = () => {
     //corrije un bug que causa que la imagen generada no tenga el tama;o correcto
