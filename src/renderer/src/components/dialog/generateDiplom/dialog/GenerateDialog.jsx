@@ -17,7 +17,7 @@ export default function GenerateImgDialog() {
   const [format, setFormat] = useState("toJpeg");
 
 
-  /*function handleGenerate() {
+  function handleGenerate() {
     const filter = (node) => node.tagName !== 'i';
 
     domtoimage
@@ -30,24 +30,9 @@ export default function GenerateImgDialog() {
       });
 
       closeDialog();
-  };*/
-
-  function handleGenerate() {
-    const filter = (node) => node.tagName !== 'i';
-    console.log("Ruta de sheetRef:", sheetRef.current);
-    domtoimage.toBlob(sheetRef.current, { quality, filter }).then(function (blob) {
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.download = 'Diploma';
-      link.href = url;
-      link.click();
-      URL.revokeObjectURL(url);
-    });
-
-
-
-    closeDialog();
   };
+
+ 
 
   const closeDialog = () => {
     //corrije un bug que causa que la imagen generada no tenga el tama;o correcto
