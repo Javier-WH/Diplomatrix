@@ -48,15 +48,19 @@ function App() {
     })
     
     let scrollPanel = document.getElementById("scroll-container");
-    let scrollHeight = scrollPanel.scrollHeight;
-    let clientHeight = scrollPanel.clientHeight;
-    let scrollPosition = scrollHeight / 2 - clientHeight / 2;
-    if (!isIncreaseHeigthNeeded) scrollPanel.scrollTop =   scrollPosition;
+    if (!isIncreaseHeigthNeeded) {
+      let scrollHeight = scrollPanel.scrollHeight;
+      let clientHeight = scrollPanel.clientHeight;
+      let scrollPosition = scrollHeight / 2 - clientHeight / 2;
+      scrollPanel.scrollTop =   scrollPosition;
+    }
 
-    let scrollWidth = scrollPanel.scrollWidth;
-    let clientWidth = scrollPanel.clientWidth;
-    let scrollPositionX = scrollWidth / 2 - clientWidth / 2;
-    if (!isIncreaseWidthNeeded) scrollPanel.scrollLeft = scrollPositionX;
+    if (!isIncreaseWidthNeeded){
+      let scrollWidth = scrollPanel.scrollWidth;
+      let clientWidth = scrollPanel.clientWidth;
+      let scrollPositionX = scrollWidth / 2 - clientWidth / 2;
+      scrollPanel.scrollLeft = scrollPositionX;
+    }
 
   
     setScrollContainerStyle({
