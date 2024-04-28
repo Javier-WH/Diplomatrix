@@ -1,8 +1,24 @@
 #zoomTool-container{
   color: var(--primary-color);
-  width: 200px;
+  width: 300px;
   height: 100%;
   display: flex;
   align-items: center;
   column-gap: 10px;
+}
+
+#zoomTool-container > input{
+  width: 60px;
+  text-align: center;
+  border: 1px solid transparent;
+  background-color: var(--surface-color);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+#zoomTool-container > input:focus{
+  border: 1px solid var(--primary-color);
+  background-color: white;
 }
