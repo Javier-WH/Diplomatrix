@@ -37,6 +37,6 @@ export default function BackgroundSelector(){
       <span>Color de Fondo</span>
       <Button icon="pi pi-refresh" rounded text aria-label="Filter" onClick={handleReset} />
     </div>
-    <ColorPicker value={backgroundColor} onChange={setBackgroundColor} hidePresets={true} locales={customLocales} />
+    <ColorPicker value={backgroundColor} onChange={setBackgroundColor} hidePresets={true} locales={customLocales} hideOpacity = {true} />
   </div>
 }

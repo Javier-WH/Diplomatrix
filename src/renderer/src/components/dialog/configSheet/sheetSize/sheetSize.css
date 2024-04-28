@@ -3,6 +3,7 @@
   flex-direction: column;
   row-gap: 10px;
   position: relative;
+
 }
 .sheetSizeSelector-container select{
   height: 40px;
@@ -11,3 +12,4 @@
   border-color: var(--primary-color);
 
 }
+
