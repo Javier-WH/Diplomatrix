@@ -15,8 +15,6 @@ export function MainContextProvider(props) {
   const [scaleAux, setScaleAux] = useState( sheetStyle?.scale ?? 80);
   const sheetRef = useRef(null);
 
-
-
   function addStyles(styleList) {
     if (!styleList) return
     let _elements = JSON.parse(JSON.stringify(elements));

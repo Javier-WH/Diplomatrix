@@ -20,7 +20,7 @@ import UploadImage from "./toolBar/uploadImage/upLoadImage"
 import SaveButton from "./toolBar/save/save"
 import LoadFile from "./toolBar/load/load"
 import ConfigSheet from "../dialog/configSheet/configSheet"
-
+import History from "./toolBar/history/history"
 
 export default function ToolBar() {
 
@@ -50,6 +50,7 @@ export default function ToolBar() {
         <LoadFile />
         <ConfigSheet />
         <CreateImageButton />
+        <History/>
       </div>
 
       <div className="toolbar-tools-seccion">

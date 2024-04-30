@@ -5,7 +5,7 @@ import EditText from "./selectionToolUtils/editText";
 import "./selectionTool.css"
 
 export default function SelectionTool(){
-  const { selectedElement, elements, setElements, setSelectedElement, sheetStyle } = useContext(MainContext);
+  const { selectedElement, elements, setElements, setSelectedElement, sheetStyle, fullEditElemtnt } = useContext(MainContext);
   const [boxStyle, setBoxStyle] = useState();
   const [initialMousePosition, setInitialMousePosition] = useState(null);
   const [mouseDown, setMouseDown] = useState(false);
@@ -19,11 +19,12 @@ export default function SelectionTool(){
       setBoxStyle({display: "none"})
       return
     }
+
     const styleProps = elements[selectedElement].style;
     const { height, width, left, top, position } = styleProps;
     const style = { height, width, left, top, position}
     setBoxStyle(style)
-  }, [selectedElement, elements])
+  }, [selectedElement, /*elements*/])
 
   // manejo del click, para cambiar tamaño y para mover
   //establece la posicion y tamaño inicial del la herramienta
@@ -220,8 +221,9 @@ export default function SelectionTool(){
     if (!boxStyle || selectedElement === null){
       return
     }
+    fullEditElemtnt({style: boxStyle})
+/*
     const { height, width, left, top, } = boxStyle
-    
     let elementData = elements[selectedElement]
     let previusStyle = elementData.style
     const currentStyle = {
@@ -232,6 +234,7 @@ export default function SelectionTool(){
       top
     }
     elementData.style = currentStyle
+    */
 
   }, [boxStyle])
 

@@ -53,16 +53,3 @@ export default function SheetSizeDialog() {
     </Dialog>
   )
 }
-
-/*
-<div id="config-sheet-main-container">
-        <div id='config-sheet-dialog-button-container'>
-          <Button label="Aceptar" icon="pi pi-check" onClick={() => setShowConfigSheet(false)} />
-        </div>
-        <div id="config-sheet-main-container-sub">
-          <SheetSize />
-          <OrientationSelector />
-        </div>
-        <BackgroundSelector />
-      </div>
-*/

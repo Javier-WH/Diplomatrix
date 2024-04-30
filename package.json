@@ -23,6 +23,7 @@
     "dom-to-image-more": "^3.3.0",
     "font-list": "^1.5.1",
     "jimp": "^0.22.12",
+    "lodash": "^4.17.21",
     "primeicons": "^6.0.1",
     "primereact": "^10.5.1",
     "react-best-gradient-color-picker": "^3.0.7",

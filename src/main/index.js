@@ -1,9 +1,11 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/logo.jpg?asset'
 import loadFonts from './functions/loadFonts/loadFonts'
 import LoadImage from './functions/loadImage/loadImage'
+
+let shouldQuit = false;
 
 function createWindow() {
   // Create the browser window.
