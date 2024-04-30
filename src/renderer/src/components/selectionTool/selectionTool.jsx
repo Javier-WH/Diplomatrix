@@ -15,7 +15,7 @@ export default function SelectionTool(){
 
   //la herramienta se coloca sobre el elemento
   useEffect(()=>{
-    if(selectedElement == null){
+    if (selectedElement == null || elements.length === 0){
       setBoxStyle({display: "none"})
       return
     }

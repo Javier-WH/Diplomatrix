@@ -12,6 +12,10 @@ export default function History() {
   const history = useRef([])
 
 
+
+
+
+
   const getNewHistory = () => {
     const currentHistory = history.current[index.current] ?? [];
     if (sheetStateChanged([...elements], currentHistory)) {
@@ -20,39 +24,48 @@ export default function History() {
       index.current++;
       history.current = history.current.slice(0, index.current + 1);
     }
-    console.log(history.current)
-    console.log(sheetStateChanged(elements, currentHistory))
   };
 
   useEffect(() => {
+
     window.addEventListener("mouseup", getNewHistory);
     return () => {
       window.removeEventListener("mouseup", getNewHistory);
     };
-  }, [elements, selectedElement]);
+  }, [elements, selectedElement, history.current, index.current]);
+
 
 
 
 
   const undo = () => {
     setSelectedElement(null)
+
     const previousIndex = Math.max(0, index.current - 1);
     const previousElements = history.current[previousIndex];
 
     if (previousElements) {
       setElements(previousElements);
       index.current = previousIndex
+
+      /*const newSelectedElement = elements.length -1 >= selectedElement ? selectedElement : null;
+      setTimeout(() => {
+        setSelectedElement(newSelectedElement);
+      }, 100);*/
+
     }
   };
 
 
   const redo = () => {
-    /* const nextIndex = Math.min(currentIndex + 1, history.length - 1);
-     const nextElements = history[nextIndex];
+    setSelectedElement(null)
+    const nextIndex = Math.min(index.current + 1, history.current.length - 1);
+    const nextElements = history.current[nextIndex];
      if (nextElements) {
        setElements(nextElements);
-       setCurrentIndex(nextIndex);
-     }*/
+       index.current =nextIndex;
+       
+     }
   };
 
 

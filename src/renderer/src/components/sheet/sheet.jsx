@@ -94,7 +94,6 @@ export default function Sheet() {
         ...(type === 'txt' && { textAlign: "center" }),
       }
 
-
       const element = {
         header: {
           index,
