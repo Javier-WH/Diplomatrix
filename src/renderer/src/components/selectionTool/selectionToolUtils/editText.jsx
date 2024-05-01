@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState} from "react"
+import { useContext, useEffect, useRef, useState} from "react"
 import { MainContext } from "../../../contexts/mainContext";
 import { InputText } from "primereact/inputtext";
 import PropTypes from "prop-types"
@@ -9,6 +9,7 @@ export default function EditText({ op }){
   const { selectedElement, elements, setElements } = useContext(MainContext);
   const [value, setValue] = useState('');
   const [text, setText] = useState('')
+  const inputRef = useRef(null)
 
   //cuando se pisa la techa enter, se cambia el valor de text
   const onKeyPress = (e) =>{
@@ -36,12 +37,17 @@ export default function EditText({ op }){
     }
     setValue(content)
 
+    //da el focus al input
+    inputRef.current.focus();
 
   },[])
+  
+
+  
 
   return <div id="editText-overlay-panel-container">
     <span>Debe pisar enter para que el texto se actualice</span>
-    <InputText value={value} onChange={(e) => setValue(e.target.value)} onKeyPress={onKeyPress} style={{width:"100%"}} />
+    <InputText value={value} onChange={(e) => setValue(e.target.value)} onKeyPress={onKeyPress} style={{width:"100%"}}  ref={inputRef}/>
   </div>
 
 }

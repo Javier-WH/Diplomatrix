@@ -21,6 +21,7 @@ import SaveButton from "./toolBar/save/save"
 import LoadFile from "./toolBar/load/load"
 import ConfigSheet from "../dialog/configSheet/configSheet"
 import History from "./toolBar/history/history"
+import VectorTool from "./toolBar/vetorTool"
 
 export default function ToolBar() {
 
@@ -51,6 +52,7 @@ export default function ToolBar() {
         <ConfigSheet />
         <CreateImageButton />
         <History/>
+        <VectorTool/>
       </div>
 
       <div className="toolbar-tools-seccion">
