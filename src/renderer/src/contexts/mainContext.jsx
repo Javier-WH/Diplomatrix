@@ -9,7 +9,6 @@ export const MainContext = createContext();
 export function MainContextProvider(props) {
   const [elements, setElements,] = useState([])
   const [sheetStyle, setSheetStyle] = useState(defaultSheetStyle());
-  const [mouseCords, SetMouseCords] = useState({ x: 20, y: 0 });
   const [newElementData, setNewElemntData] = useState(null);
   const [selectedElement, setSelectedElement] = useState(null);
   const [scaleAux, setScaleAux] = useState( sheetStyle?.scale ?? 80);
@@ -104,8 +103,6 @@ export function MainContextProvider(props) {
     setNewElemntData,
     sheetStyle,
     setSheetStyle,
-    mouseCords,
-    SetMouseCords,
     selectedElement,
     setSelectedElement,
     addStyle,

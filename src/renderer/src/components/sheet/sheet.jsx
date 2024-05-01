@@ -108,11 +108,13 @@ export default function Sheet() {
       _elements.push(element)
       setElements(_elements)
       setNewElemntData(null)
+ 
 
     } catch (error) {
       console.log(error)
     }
   }
+
 
 
 
