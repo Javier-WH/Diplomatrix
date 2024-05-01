@@ -12,6 +12,9 @@ export default function SelectionTool(){
   const [elementClicked, setElementClicked] = useState(null);
   const [type, setType] = useState('svg')
   const op = useRef(null);
+  const savedElement = useRef(null)
+  const [textEditorOpenned, setTextEditorOpenned] = useState (false)
+
 
   //la herramienta se coloca sobre el elemento
   useEffect(()=>{
@@ -55,6 +58,7 @@ export default function SelectionTool(){
       const boxLeft = boxStyle.left.replace("px", "")
       const boxTop = boxStyle.top.replace("px", "")
       const scale = sheetStyle.scale
+   
   
       if (elementClicked === 'rigth-selectorBall'){
         const newWidth = Number.parseFloat(boxWidth) - (Number.parseFloat(diferenceX) /scale)
@@ -152,9 +156,6 @@ export default function SelectionTool(){
       
         })
       }
-  
-
-
     };
 
    
@@ -222,20 +223,6 @@ export default function SelectionTool(){
       return
     }
     fullEditElemtnt({style: boxStyle})
-/*
-    const { height, width, left, top, } = boxStyle
-    let elementData = elements[selectedElement]
-    let previusStyle = elementData.style
-    const currentStyle = {
-      ...previusStyle,
-      height,
-      width,
-      left,
-      top
-    }
-    elementData.style = currentStyle
-    */
-
   }, [boxStyle])
 
 
@@ -248,6 +235,51 @@ export default function SelectionTool(){
   }
 
   
+  //maneja los eventos de compiar y pegar
+  useEffect(()=>{   
+ 
+    const copyFunction = e =>{
+      if(textEditorOpenned) return
+
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
+        savedElement.current = elements[selectedElement]
+        
+      }
+      
+      if (e.ctrlKey && (e.key === 'v' || e.key === 'V')) {
+        
+        if(savedElement.current === null) return
+        let _elements = JSON.parse(JSON.stringify(elements));
+        _elements.push(savedElement.current)
+        _elements.forEach((element, i) => {
+          element.header.index = i
+        });
+        setElements(_elements)
+        
+      }
+      if (e.ctrlKey && (e.key === 'x' || e.key === 'X')) {
+        savedElement.current = elements[selectedElement]
+        let _elements = JSON.parse(JSON.stringify(elements));
+        _elements.splice(selectedElement, 1)
+
+        _elements.forEach((element, i) => {
+          element.header.index = i
+        });
+        setElements(_elements)
+        setSelectedElement(null)
+      }
+    }
+
+  
+    window.addEventListener("keydown", copyFunction)
+    return ()=>{
+      window.removeEventListener("keydown", copyFunction)
+    }
+    
+  },[selectedElement, elements, textEditorOpenned])
+
+
+
 
 
   return<>
@@ -261,7 +293,7 @@ export default function SelectionTool(){
       <div id="button-left-selectorBall" className="selectorBall"></div>
       <div id="left-selectorBall" className="selectorBall"></div>
 
-      <OverlayPanel ref={op}>
+      <OverlayPanel ref={op} onShow={()=>setTextEditorOpenned(true)} onHide={()=> setTextEditorOpenned(false)}>
        {
           type === 'txt' ?
             <EditText op={op}/>
