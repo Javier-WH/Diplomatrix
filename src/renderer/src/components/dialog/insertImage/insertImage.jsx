@@ -5,6 +5,7 @@ import "./insertImage.css"
 import FilterButons from './filterImageButons';
 import { MainContext } from '../../../contexts/mainContext';
 import { MenuContext } from '../../../contexts/menuContext';
+import Filter from './filter';
 const { ipcRenderer } = window.require('electron');
 
 
@@ -14,7 +15,7 @@ export default function InsertImage() {
   const { setNewElemntData } = useContext(MainContext)
   const { showInsertImage: visible, setShowInsertImage:setVisible } =useContext(MenuContext)
   const [imgList, setImgList] = useState([]);
-  const [category, setCategory] = useState();
+  const [filterList, setFilterList] = useState([])
 
   //con esto se solicita al entorno de electron que genere una lista de los assets
   useEffect(() => {
@@ -60,28 +61,20 @@ export default function InsertImage() {
     };
   }, []);
 
+
   return (
     <div className="card flex justify-content-center">
       <Dialog header="Insertar Imagenes" modal={false} closeOnEscape={false} visible={visible} style={{ width: '25%', height: '70%' }} position='right' onHide={() => setVisible(false)}>
-        <FilterButons category={category} setCategory={setCategory}/>
+       
+        <Filter filterList={filterList} setFilterList ={setFilterList} />
+
        <div id='insertImage-imageContainer'>
         {
-    
-          imgList.filter(asset=>{
-            if(category === undefined){
-              return asset
-            }
-            const { name} = asset
-            const info = name.split("#")
-
-            if(category.code === info[0]){
-              return asset
-            }
-          })
+          filterImagesByCategories(imgList, filterList)
           .map((asset) =>{ 
             const {name, img} = asset
             const info = name.split("#")
-            const title = info[1]
+            const title = info[info.length -1]
             return < img key={name} src={img} title={title} className='insertImage-img' onClick={() => onClick({image: img, name}) } />
           })
         
@@ -98,3 +91,24 @@ InsertImage.propTypes = {
   setVisible: PropTypes.func,
   setNewElemntData: PropTypes.func
 };
+
+/*function filterImagesByCategories(images, categories) {
+  if(categories.length === 0) return images
+  return images.filter(image => {
+    const imageCategories = image.name.split('#');
+    return imageCategories.some(category => categories.some(cat => cat.toLowerCase() === category.toLowerCase().replace(".svg", "")));
+  });
+}*/
+
+
+function filterImagesByCategories(images, categories) {
+  if (categories.length === 0) return images;
+  return images.filter(image => {
+    const imageCategories = image.name.split('#');
+    return imageCategories.some(category => {
+      const formattedCategory = category.toLowerCase().replace(".svg", "");
+      return categories.some(cat => formattedCategory.includes(cat.toLowerCase()));
+    });
+  });
+}
+
