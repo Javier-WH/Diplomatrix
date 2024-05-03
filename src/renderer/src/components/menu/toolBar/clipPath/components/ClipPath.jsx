@@ -1,11 +1,13 @@
 import { MainContext } from "../../../../../contexts/mainContext"
 import { useContext } from "react"
 import { Button } from 'primereact/button';
+import getSVGicon from '../../../../../icons/iconList.jsx'
 import "./ClipPath.css"
+
 
 export default function ClipPath() {
 
-  const { addStyle } = useContext(MainContext)
+  const { addStyle,  activeCropPathSelector, setActiveCropPathSelector } = useContext(MainContext)
 
 
 
@@ -52,10 +54,13 @@ export default function ClipPath() {
     })
   }
 
+
   return <>
     <div id="clipPath-title-container">
       <span>Formas</span>
+  
       <Button icon="pi pi-refresh" rounded text aria-label="Filter" onClick={handleRestore} />
+    
     </div>
     <div id="clipPath-main-container">
       {

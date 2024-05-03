@@ -7,12 +7,13 @@ import { useContext} from "react";
 export default function CreateImageButton(){
 
   const { sheetRef, setSelectedElement, sheetStyle, setSheetStyle } = useContext(MainContext)
-  const { setShowGenerateImg } = useContext(MenuContext)
+  const { setShowGenerateImg, closeAllDialogs } = useContext(MenuContext)
 
 
   
   const handleClick = ()=>{
     if (sheetRef === null) return
+    closeAllDialogs()
     setSelectedElement(null)
     setSheetStyle({
       ...sheetStyle,

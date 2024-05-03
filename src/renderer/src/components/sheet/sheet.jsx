@@ -5,8 +5,9 @@ import SelectionTool from "../selectionTool/selectionTool.jsx";
 import Dialogs from "../dialog/dialogProvider.jsx";
 
 
+
 export default function Sheet() {
-  const { elements, setElements, sheetStyle, newElementData, setNewElemntData, sheetRef } = useContext(MainContext);
+  const { elements, setElements, sheetStyle, newElementData, setNewElemntData, sheetRef, activeCropPathSelector} = useContext(MainContext);
  
   const [ cursorImage, setCursorImage ] = useState({});
 
@@ -124,6 +125,7 @@ export default function Sheet() {
       <img src={cursorImage.image} alt="" style={cursorImage.style}  /> 
       <SelectionTool />
       <Dialogs/>
+
     </div>
   );
 }

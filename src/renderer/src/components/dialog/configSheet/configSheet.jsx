@@ -5,12 +5,16 @@ import { MenuContext } from "../../../contexts/menuContext";
 import getSVGIcon from "../../../icons/iconList";
 import "./configSheet.css"
 export default function ConfigSheet() {
-  const {setShowConfigSheet } = useContext(MenuContext)
+  const { setShowConfigSheet, closeAllDialogs } = useContext(MenuContext)
 
+  const handleClick =() =>{
+    closeAllDialogs()
+    setShowConfigSheet(true)
+  }
 
   return (
     <div className="card flex justify-content-center" style={{ zIndex: "99999999999999999" }}>
-      <Button icon={getSVGIcon("textFormat")} onClick={() => setShowConfigSheet(true)} />
+      <Button icon={getSVGIcon("textFormat")} onClick={handleClick} />
     </div>
   )
 }

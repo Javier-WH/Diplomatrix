@@ -1,0 +1,27 @@
+#crop-tool-image-preview{
+  max-width: 800px;
+  min-width: 100px;
+  height: auto;
+}
+#crop-dialog-croptool-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+}
+
+#crop-tool-buton-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  align-items: center;
+}
+
+#crop-tool-buton-container .crop-tool-buton-container{
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  justify-content: left;
+  align-items: center;
+}

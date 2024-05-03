@@ -4,10 +4,11 @@ import { Button } from 'primereact/button';
 import { MenuContext } from "../../../contexts/menuContext";
 
 export default function InsertImageButton() {
-  const { setShowInsertImage, showInsertImage } = useContext(MenuContext)
+  const { setShowInsertImage, showInsertImage, closeAllDialogs  } = useContext(MenuContext)
 
 
   const handleClick = () => {
+    closeAllDialogs()
     setShowInsertImage(!showInsertImage)
   }
 

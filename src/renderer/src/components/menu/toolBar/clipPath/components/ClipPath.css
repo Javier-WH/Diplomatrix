@@ -14,3 +14,6 @@
   margin-bottom: 10px;
    
 }
+.clipPatButton-sub svg {
+  fill: var(--primary-color);
+}

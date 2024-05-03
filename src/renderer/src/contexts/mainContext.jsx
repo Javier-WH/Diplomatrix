@@ -12,6 +12,8 @@ export function MainContextProvider(props) {
   const [newElementData, setNewElemntData] = useState(null);
   const [selectedElement, setSelectedElement] = useState(null);
   const [scaleAux, setScaleAux] = useState( sheetStyle?.scale ?? 80);
+  const [activeCropPathSelector, setActiveCropPathSelector] = useState(false);
+  
   const sheetRef = useRef(null);
 
   function addStyles(styleList) {
@@ -114,7 +116,9 @@ export function MainContextProvider(props) {
     fullEditElemtnt,
     deleteStyle,
     scaleAux,
-    setScaleAux
+    setScaleAux,
+    activeCropPathSelector, 
+    setActiveCropPathSelector
   }
 
   return (

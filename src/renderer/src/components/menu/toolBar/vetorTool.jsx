@@ -46,7 +46,6 @@ export default function VectorTool() {
       setEnabled(false)
       return
     }
-    console.log(elements[selectedElement])
     const type = elements[selectedElement].header.type;
     const content = elements[selectedElement].header.content
 

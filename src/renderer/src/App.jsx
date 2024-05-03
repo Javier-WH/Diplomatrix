@@ -4,8 +4,6 @@ import Sheet from './components/sheet/sheet'
 import StatusBar from './components/statusBar/statusBar'
 import { MainContext } from './contexts/mainContext'
 import { milimeterToPixel } from './utils/fucntions'
-import SheetSizeDialog from './components/dialog/configSheet/dialog/sheetConfigDialog'
-import GenerateImgDialog from './components/dialog/generateDiplom/dialog/GenerateDialog'
 import './app.css'
 
 
@@ -87,8 +85,7 @@ function App() {
 
     </div>
     
-    <SheetSizeDialog/>
-    <GenerateImgDialog/>
+  
   </>
 
 }

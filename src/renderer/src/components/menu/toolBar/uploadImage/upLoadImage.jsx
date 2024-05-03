@@ -19,7 +19,7 @@ export default function UploadImage() {
         const imageHeight = this.naturalHeight > 915 ? this.naturalHeight * 0.3 : this.naturalHeight;
         const base64Data = reader.result.split(",")[1];
         const imageData = "data:image/" + file.type.split("/")[1] + ";base64," + base64Data;
-
+  
         setNewElemntData({
           image: imageData,
           name: file.name,
