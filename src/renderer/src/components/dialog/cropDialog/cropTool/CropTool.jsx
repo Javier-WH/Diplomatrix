@@ -11,7 +11,7 @@ import { Checkbox } from "primereact/checkbox";
 export default function CropTool({ src, setShowCrop }) {
 
   const { elements, setElements, selectedElement, setSelectedElement } = useContext(MainContext)
-  const [crop, setCrop] = useState()
+  const [crop, setCrop] = useState(null)
   const [checked, setChecked] = useState(false);
   const [aspect, setAspect] = useState(0)
   const imageRef = useRef(null)
@@ -37,7 +37,7 @@ export default function CropTool({ src, setShowCrop }) {
 
   return <>
     <div id='crop-tool-buton-container'>
-      <Button label="Cortar" onClick={onCrop} severity="success" />
+      <Button label="Cortar" onClick={onCrop} severity="success" disabled={crop=== null}/>
       <Button label="Salir" onClick={() => setShowCrop(false)} severity="danger" />
       <div></div>
       <div className="crop-tool-buton-container">
