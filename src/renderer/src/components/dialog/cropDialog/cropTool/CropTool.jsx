@@ -46,9 +46,11 @@ export default function CropTool({ src, setShowCrop }) {
 
       </div>
     </div>
-    <ReactCrop crop={crop} aspect={aspect} onChange={(crop, percentCrop) => setCrop(crop)}>
-      <img id='crop-tool-image-preview' ref={imageRef} src={src} />
-    </ReactCrop>
+    <div id='react-crop-container'>
+      <ReactCrop crop={crop} aspect={aspect} onChange={(crop) => setCrop(crop)}>
+        <img id='crop-tool-image-preview' ref={imageRef} src={src} />
+      </ReactCrop>
+    </div>
   </>
 }
 

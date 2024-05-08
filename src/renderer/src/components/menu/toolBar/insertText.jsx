@@ -16,6 +16,6 @@ export default function InsertTextButton(){
     })
   }
 
-  return <Button icon={getSVGIcon("insertText")} aria-label="Filter" onClick={handleClick} />
+  return <Button icon={getSVGIcon("insertText")} aria-label="Filter" onClick={handleClick} style={{minWidth: "40px"}}/>
 
 }

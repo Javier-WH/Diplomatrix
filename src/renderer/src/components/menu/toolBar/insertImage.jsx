@@ -12,6 +12,6 @@ export default function InsertImageButton() {
     setShowInsertImage(!showInsertImage)
   }
 
-  return <Button icon={getSVGIcon("insertImage")} aria-label="Filter" onClick={handleClick} />
+  return <Button icon={getSVGIcon("insertImage")} aria-label="Filter" onClick={handleClick} style={{ minWidth: "40px"}}/>
 
 }

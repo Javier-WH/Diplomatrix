@@ -60,5 +60,5 @@ export default function VectorTool() {
   },[selectedElement])
   
 
-  return <Button icon={getSVGIcon("compas")} aria-label="Filter" onClick={handleClick} disabled = {!enabled} />
+  return <Button icon={getSVGIcon("compas")} aria-label="Filter" onClick={handleClick} disabled = {!enabled} style={{minWidth: "40px"}}/>
 }

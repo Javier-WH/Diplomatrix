@@ -26,46 +26,46 @@ import Crop from "./toolBar/crop"
 
 export default function ToolBar() {
 
-  return <div id="toolbar">
+
+  /*
     <div id="toolbar-filemenu-container">
       <FileMenu />
     </div>
-    <div id="toolbar-tools-container">
-
-
-      <div className="toolbar-tools-seccion">
-        <InsertImageButton />
-
-        <div id="font-size-button-container">
-          <BackGroundColorOverlay />
-          <TextColorOverlay />
-          <TextBorderOverlay />
-          <TextShadowOverlay />
-          <BoxBorderOverlay />
-          <EditPosition />
-          <Filter />
-          <RoundedCornerOverlay />
-          <ClipPathOverlay />
-          <UploadImage />
-        </div>
-        <SaveButton />
-        <LoadFile />
-        <ConfigSheet />
-        <CreateImageButton />
-        <History/>
-        <VectorTool/>
-        <Crop/>
-      </div>
-
-      <div className="toolbar-tools-seccion">
-        <InsertTextButton />
-        <FontStyleSelector />
-        <FontAligmentSelector />
-        <FontSelector />
-        <FontSizeSelector />
-      </div>
-
+  
+  
+  */
+  return <div id="toolbar">
+    <div>
+      <InsertImageButton />
+      <BackGroundColorOverlay />
+      <TextColorOverlay />
+      <TextBorderOverlay />
+      <TextShadowOverlay />
+      <BoxBorderOverlay />
+      <EditPosition />
+      <Filter />
+      <RoundedCornerOverlay />
+      <ClipPathOverlay />
+      <UploadImage />
+      <SaveButton />
+      <LoadFile />
+      <ConfigSheet />
+      <CreateImageButton />
+      <History />
+      <VectorTool />
+      <Crop />
     </div>
+
+    <div className="text-butons-container">
+      <InsertTextButton />
+      <FontStyleSelector />
+      <FontAligmentSelector />
+      <FontSelector />
+      <FontSizeSelector />
+    </div>
+
+
+
   </div>
 
 }

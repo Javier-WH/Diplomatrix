@@ -22,5 +22,5 @@ export default function CreateImageButton(){
     setShowGenerateImg(true)
   }
 
-  return <Button icon={getSVGIcon("addImg")} aria-label="Filter" onClick={handleClick} />
+  return <Button icon={getSVGIcon("addImg")} aria-label="Filter" onClick={handleClick} style={{minWidth: "40px"}}/>
 }

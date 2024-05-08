@@ -6,17 +6,18 @@ import { useContext, useEffect, useState } from "react";
 
 export default function Crop() {
   const { showCrop, setShowCrop, closeAllDialogs } = useContext(MenuContext)
-  const {selectedElement} = useContext(MainContext)
-  const [diabled, setDisabled] = useState (false)
+  const { elements, selectedElement } = useContext(MainContext)
+  const [diabled, setDisabled] = useState(false)
 
-  useEffect(()=>{
-    setDisabled(selectedElement === null ? true : false)
-  },[selectedElement])
+  useEffect(() => {
+    const isTxtType = selectedElement === null || elements[selectedElement]?.header?.type === "txt";
+    setDisabled(isTxtType);
+  }, [selectedElement]);
 
-  const handleClick = () =>{
+  const handleClick = () => {
     closeAllDialogs()
     setShowCrop(!showCrop)
   }
 
-  return <Button icon={getSVGIcon("crop")} aria-label="Filter" onClick={handleClick} disabled={diabled}/>
+  return <Button icon={getSVGIcon("crop")} aria-label="Filter" onClick={handleClick} disabled={diabled} />
 }

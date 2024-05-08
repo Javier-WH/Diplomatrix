@@ -25,3 +25,12 @@
   justify-content: left;
   align-items: center;
 }
+
+#react-crop-container{
+  width: 100%;
+  height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
