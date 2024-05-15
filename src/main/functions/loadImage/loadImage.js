@@ -26,6 +26,7 @@ export default function LoadImage(mainWindow){
       if (err) {
         mainWindow.webContents.send('assetList', []); // Envía una lista vacía en caso de error
       } else {
+
         const list = fileList.map(name => {
           return {
             name,

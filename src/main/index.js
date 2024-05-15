@@ -1,11 +1,10 @@
-import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/logo.jpg?asset'
 import loadFonts from './functions/loadFonts/loadFonts'
 import LoadImage from './functions/loadImage/loadImage'
 
-let shouldQuit = false;
 
 function createWindow() {
   // Create the browser window.
@@ -26,12 +25,15 @@ function createWindow() {
     }
   })
 
-  
+
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.maximize();
-    mainWindow.show()
+    mainWindow.show();
+    LoadImage(mainWindow);
+    loadFonts(mainWindow);
   })
+
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
@@ -39,11 +41,12 @@ function createWindow() {
   })
 
 
-  //funcion para cargar una imagen desde una ruta de archivo
-  ipcMain.on('getAssetsList', () => LoadImage(mainWindow))
+  /*//funcion para cargar una imagen desde una ruta de archivo
+  ipcMain.on('getAssetsList', () => LoadImage(mainWindow))*/
+  
 
   //funcion para cargar las fuentes
-  ipcMain.on('getFontList', () => loadFonts(mainWindow))
+ /* ipcMain.on('getFontList', () => loadFonts(mainWindow))*/
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.

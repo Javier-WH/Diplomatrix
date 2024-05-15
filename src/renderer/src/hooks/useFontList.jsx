@@ -8,7 +8,7 @@ const useFontList = () => {
 
   useEffect(() => {
 
-    ipcRenderer.send('getFontList');
+    //ipcRenderer.send('getFontList');
 
     const handleFontList = (event, fonts) => {
       const nativeList = NativeFontList();

@@ -17,10 +17,11 @@ export default function InsertImage() {
   const [imgList, setImgList] = useState([]);
   const [filterList, setFilterList] = useState([])
 
+  /*
   //con esto se solicita al entorno de electron que genere una lista de los assets
   useEffect(() => {
     ipcRenderer.send('getAssetsList');
-  }, []);
+  }, []);*/
 
   //aqui se captura la lista de los assets y se almacena en el estado
   useEffect(() => {
